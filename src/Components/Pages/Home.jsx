@@ -104,7 +104,7 @@ const Home = () => {
                 </Button>
                 <Button size="large">Learn More</Button>
                 </div>
-            </motion.div>
+            </motion.div> 
             </section>
 
             <Separator.Root
