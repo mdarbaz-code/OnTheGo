@@ -133,11 +133,20 @@ const products = [
   },
 ];
 
-const AllProducts = () => {
+const AllProducts = ({ searchQuery = "" }) => {
   const [sortBy, setSortBy] = useState("price");
 
   const sortedProducts = useMemo(() => {
-    return [...products].sort((a, b) => {
+    // First, filter by search query
+    let filtered = products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // Then, sort the filtered products
+    return filtered.sort((a, b) => {
       // Always push unavailable items to bottom
       if (a.isAvailable !== b.isAvailable) {
         return a.isAvailable ? -1 : 1;
@@ -158,7 +167,7 @@ const AllProducts = () => {
           return 0;
       }
     });
-  }, [sortBy]);
+  }, [sortBy, searchQuery]);
 
   const filterBtn = (value, label) => (
     <button
@@ -179,8 +188,15 @@ const AllProducts = () => {
       <div className="max-w-7xl mx-auto px-4 py-6">
         {/* Header */}
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          Resturant Name <br /> Explore Our Menu
+          Explore Our Menu
         </h1>
+
+        {searchQuery && (
+          <p className="text-lg text-gray-600 mb-4">
+            Search results for:{" "}
+            <span className="font-semibold text-red-600">"{searchQuery}"</span>
+          </p>
+        )}
 
         {/* Filter Bar */}
         <div className="flex flex-wrap gap-3 mb-6 sticky top-0 bg-gray-50 py-3 z-10">
@@ -192,11 +208,19 @@ const AllProducts = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {sortedProducts.map((product) => (
-            <Product key={product.id} {...product} />
-          ))}
-        </div>
+        {sortedProducts.length > 0 ? (
+          <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {sortedProducts.map((product) => (
+              <Product key={product.id} {...product} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-xl text-gray-500">
+              No products found for "{searchQuery}"
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

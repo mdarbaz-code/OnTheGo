@@ -10,14 +10,14 @@ const Product = ({
   tag,
   isNew,
   isAvailable,
-  category
+  category,
 }) => {
   const [liked, setLiked] = useState(false);
 
   const finalPrice = price - discount;
 
   return (
-    <div className=" bg-white border-2 border-gray-300 rounded-lg shadow-sm hover:shadow-lg transition overflow-hidden w-[17rem] ">
+    <div className=" bg-white border-2 border-gray-300 rounded-lg shadow-sm hover:shadow-lg transition overflow-hidden w-68 ">
       {/* Image Section */}
       <div className="relative aspect-4/3">
         <img src={image} alt={name} className="w-full h-full object-cover" />
