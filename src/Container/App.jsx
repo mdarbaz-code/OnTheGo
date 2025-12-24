@@ -5,14 +5,19 @@ import { Theme } from "@radix-ui/themes";
 
 // Components
 import Home from "../Components/Pages/Home"
+import AllProducts from "../Components/Pages/AllProducts";
 
 function App() {
 
   return (
     <>
-      <Theme>
+      {/* <Theme>
         <Home />
-      </Theme>
+      </Theme> */}
+
+
+        <AllProducts/>
+
     </>
   )
 }
