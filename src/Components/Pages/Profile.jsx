@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   FaEnvelope,
@@ -57,7 +58,7 @@ const Profile = () => {
 
   // MAIN PROFILE UI
   return (
-    <div className="min-h-screen bg-gray-100">c
+    <div className="min-h-screen bg-gray-100">
 
       {/* HEADER */}
       <div className="bg-red-600 text-white px-8 py-10 flex items-center gap-5">
@@ -208,3 +209,4 @@ const Help = ({ goBack }) => (
 );
 
 export default Profile;
+

@@ -1,24 +1,21 @@
-
 // Plugins or Packages
 
 import { Flex } from "antd";
 
 // re-usable components
 import InputElement from "../UI/core/Input";
+import Header from "../Core/Header";
+import AllProducts from "./AllProducts";
 
 // Components
 
-
-const Home = () => {
+const Home = ({ onSearch, searchQuery = "" }) => {
   return (
     <>
-        <Flex vertical gap="middle">
-            <InputElement size="large" placeholder="large size" />
-            <InputElement placeholder="default size"/>
-            <InputElement size="small" placeholder="small size" />
-        </Flex>
+      <Header onSearch={onSearch} />
+      <AllProducts searchQuery={searchQuery} />
     </>
   );
-}
+};
 
 export default Home;

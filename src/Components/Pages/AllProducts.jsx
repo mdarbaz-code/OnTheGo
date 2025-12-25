@@ -3,7 +3,7 @@ import Product from "../Core/Product.jsx";
 const products = [
   {
     id: 1,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://tse3.mm.bing.net/th/id/OIP.Zgim-HnEgdzBq8UjHVaUygHaJQ?rs=1&pid=ImgDetMain&o=7&rm=3",
     name: "Margherita Pizza",
     description: "Classic delight with mozzarella cheese.",
     price: 299,
@@ -16,7 +16,7 @@ const products = [
   },
   {
     id: 2,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://bing.com/th?id=OSK.581d09f1d1d576171a3a1099b007151c",
     name: "Chicken Burger",
     description: "Juicy grilled chicken patty with sauces.",
     price: 199,
@@ -29,7 +29,7 @@ const products = [
   },
   {
     id: 3,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://bing.com/th?id=OSK.604d9a439cb00d32875d08842ef36ebb",
     name: "Paneer Tikka",
     description: "Spicy grilled paneer cubes with chutney.",
     price: 249,
@@ -42,7 +42,7 @@ const products = [
   },
   {
     id: 4,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://bing.com/th?id=OSK.3e81919620d261070b3fa3eacb8ccae7",
     name: "Fish Curry",
     description: "Traditional coastal curry with fresh fish.",
     price: 349,
@@ -55,7 +55,7 @@ const products = [
   },
   {
     id: 5,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://www.cookwithkushi.com/wp-content/uploads/2015/04/best_vegetable_biryani_recipe.jpg",
     name: "Veg Biryani",
     description: "Aromatic rice cooked with fresh vegetables.",
     price: 299,
@@ -68,7 +68,7 @@ const products = [
   },
   {
     id: 6,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://www.spicypunch.com/wp-content/uploads/2020/12/mutton-rogan-josh-768x512.jpg",
     name: "Mutton Rogan Josh",
     description: "Rich Kashmiri curry with tender mutton.",
     price: 399,
@@ -81,7 +81,7 @@ const products = [
   },
   {
     id: 7,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://redhousespice.com/wp-content/uploads/2021/12/whole-spring-rolls-and-halved-ones-scaled.jpg",
     name: "Spring Rolls",
     description: "Crispy rolls stuffed with veggies.",
     price: 149,
@@ -94,7 +94,7 @@ const products = [
   },
   {
     id: 8,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://troovyfoods.com/cdn/shop/articles/54714340_1024x1024.webp?v=1662827923",
     name: "Grilled Sandwich",
     description: "Cheese-loaded sandwich with veggies.",
     price: 129,
@@ -107,7 +107,7 @@ const products = [
   },
   {
     id: 9,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://tse4.mm.bing.net/th/id/OIP.N797GDo45POduGKvdr8FQwHaLH?rs=1&pid=ImgDetMain&o=7&rm=3",
     name: "Butter Chicken",
     description: "Creamy tomato gravy with tender chicken.",
     price: 349,
@@ -120,7 +120,7 @@ const products = [
   },
   {
     id: 10,
-    image: "https://via.placeholder.com/400x300",
+    image: "https://tse2.mm.bing.net/th/id/OIP.cr8GcoK81vS-tY9fPjO4AwHaLG?rs=1&pid=ImgDetMain&o=7&rm=3",
     name: "Chocolate Brownie",
     description: "Rich chocolate dessert with nuts.",
     price: 99,
@@ -133,11 +133,20 @@ const products = [
   },
 ];
 
-const AllProducts = () => {
+const AllProducts = ({ searchQuery = "" }) => {
   const [sortBy, setSortBy] = useState("price");
 
   const sortedProducts = useMemo(() => {
-    return [...products].sort((a, b) => {
+    // First, filter by search query
+    let filtered = products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // Then, sort the filtered products
+    return filtered.sort((a, b) => {
       // Always push unavailable items to bottom
       if (a.isAvailable !== b.isAvailable) {
         return a.isAvailable ? -1 : 1;
@@ -158,7 +167,7 @@ const AllProducts = () => {
           return 0;
       }
     });
-  }, [sortBy]);
+  }, [sortBy, searchQuery]);
 
   const filterBtn = (value, label) => (
     <button
@@ -179,8 +188,15 @@ const AllProducts = () => {
       <div className="max-w-7xl mx-auto px-4 py-6">
         {/* Header */}
         <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          Resturant Name <br /> Explore Our Menu
+          Explore Our Menu
         </h1>
+
+        {searchQuery && (
+          <p className="text-lg text-gray-600 mb-4">
+            Search results for:{" "}
+            <span className="font-semibold text-red-600">"{searchQuery}"</span>
+          </p>
+        )}
 
         {/* Filter Bar */}
         <div className="flex flex-wrap gap-3 mb-6 sticky top-0 bg-gray-50 py-3 z-10">
@@ -192,11 +208,19 @@ const AllProducts = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {sortedProducts.map((product) => (
-            <Product key={product.id} {...product} />
-          ))}
-        </div>
+        {sortedProducts.length > 0 ? (
+          <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {sortedProducts.map((product) => (
+              <Product key={product.id} {...product} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-xl text-gray-500">
+              No products found for "{searchQuery}"
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
