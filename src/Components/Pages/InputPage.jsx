@@ -1,4 +1,4 @@
-import Input from "../Components/UI/Input"
+import Input from "../UI/components/Input";
 import {FiMail, FiSearch} from "react-icons/fi";
 
 function InputPage() {
