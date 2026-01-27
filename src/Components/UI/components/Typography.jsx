@@ -1,6 +1,4 @@
-import React from "react";
 import clsx from "clsx";
-
 /**
  * Extended Typography component
  *
@@ -52,7 +50,7 @@ export default function Typography({
     regular: "font-normal",
     semibold: "font-semibold",
     bold: "font-bold",
-  };
+  };                                             
 
   const colors = {
     primary: "text-[#ffb30e] hover:text-orange-400",
@@ -69,9 +67,9 @@ export default function Typography({
     base: "text-base",
     lg: "text-lg",
     xl: "text-xl",
-    "2xl": "text-2xl",
-    "3xl": "text-3xl",
-    "4xl": "text-4xl",
+    xxl: "text-2xl",
+    xxxl: "text-3xl",
+    xxxxl: "text-4xl",
   };
 
   const cursors = {
@@ -94,7 +92,7 @@ export default function Typography({
         selectable ? "select-text" : "select-none",
         disabled && "opacity-50 cursor-not-allowed",
         hidden && "hidden",
-        className
+        className,
       )}
       {...props}
     >

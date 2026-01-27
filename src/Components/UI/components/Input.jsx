@@ -4,8 +4,8 @@ import {FiEye, FiEyeOff} from 'react-icons/fi'
 const Input = ({
 
     label,
-    required,
-    type = "text", // text | email | password | number |
+    required, 
+    type = "text" | "email" | "password" | "number",
     error,
     leftIcon,
     rightIcon,
