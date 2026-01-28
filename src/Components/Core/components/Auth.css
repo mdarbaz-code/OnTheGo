@@ -1,0 +1,160 @@
+/* Auth Page Styles */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff9f0;
+  padding: 20px;
+}
+
+.auth-form-wrapper {
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 40px 50px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+/* Password Requirements */
+.password-requirements {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.requirement-item {
+  font-size: 12px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.requirement-item.met {
+  color: #27ae60;
+}
+
+.requirement-item.unmet {
+  color: #e74c3c;
+}
+
+.requirement-indicator {
+  font-weight: bold;
+  min-width: 16px;
+}
+
+/* Auth Button */
+.auth-button {
+  padding: 12px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background-color: #d35400;
+}
+
+.auth-button:active {
+  transform: scale(0.98);
+}
+
+/* Auth Toggle */
+.auth-toggle-text {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.toggle-link {
+  background: none;
+  border: none;
+  color: #e67e22;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.toggle-link:hover {
+  color: #d35400;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .auth-form-wrapper {
+    padding: 30px 20px;
+    max-width: 100%;
+  }
+
+  .auth-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+}
