@@ -1,0 +1,261 @@
+{
+  "restaurant": {
+    "id": "res_101",
+    "name": "Food Wagon Kitchen",
+    "location": "BTM Layout, Bangalore",
+    "rating": 4.4,
+    "deliveryTime": "30-40 mins",
+    "cuisines": ["Indian", "Fast Food", "Italian"],
+    "costForTwo": 400
+  },
+  "categories": [
+    {
+      "categoryId": "cat_1",
+      "categoryName": "Popular Dishes",
+      "items": [
+        {
+          "id": "item_1",
+          "name": "Cheeseburger",
+          "description": "Juicy grilled beef patty with cheese",
+          "price": 199,
+          "isVeg": false,
+          "rating": 4.5,
+          "image": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+          "isPopular": true,
+          "isSpecial": false,
+          "prepTime": "15 mins",
+          "inStock": true,
+          "offer": 10
+        },
+        {
+          "id": "item_2",
+          "name": "Margherita Pizza",
+          "description": "Classic cheese pizza with basil",
+          "price": 249,
+          "isVeg": true,
+          "rating": 4.6,
+          "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3",
+          "isPopular": true,
+          "isSpecial": true,
+          "prepTime": "20 mins",
+          "inStock": true,
+          "offer": 15
+        },
+        {
+          "id": "item_11",
+          "name": "French Fries",
+          "description": "Crispy golden potato fries",
+          "price": 99,
+          "isVeg": true,
+          "rating": 4.2,
+          "image": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "10 mins",
+          "inStock": true,
+          "offer": 0
+        },
+        {
+          "id": "item_12",
+          "name": "Chicken Wings",
+          "description": "Spicy grilled chicken wings",
+          "price": 219,
+          "isVeg": false,
+          "rating": 4.4,
+          "image": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+          "isPopular": true,
+          "isSpecial": false,
+          "prepTime": "18 mins",
+          "inStock": true,
+          "offer": 5
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_2",
+      "categoryName": "Breakfast",
+      "items": [
+        {
+          "id": "item_3",
+          "name": "Pancakes",
+          "description": "Fluffy pancakes with honey",
+          "price": 149,
+          "isVeg": true,
+          "rating": 4.3,
+          "image": "https://plus.unsplash.com/premium_photo-1672846027109-e2c91500afef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFuY2FrZXxlbnwwfHwwfHx8MA%3D%3D",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "12 mins",
+          "inStock": true,
+          "offer": 0
+        },
+        {
+          "id": "item_4",
+          "name": "English Breakfast",
+          "description": "Eggs, sausage, beans & toast",
+          "price": 299,
+          "isVeg": false,
+          "rating": 4.4,
+          "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d",
+          "isPopular": true,
+          "isSpecial": true,
+          "prepTime": "25 mins",
+          "inStock": true,
+          "offer": 20
+        },
+        {
+          "id": "item_13",
+          "name": "Omelette Toast",
+          "description": "Cheese omelette with toasted bread",
+          "price": 129,
+          "isVeg": false,
+          "rating": 4.1,
+          "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "10 mins",
+          "inStock": true,
+          "offer": 0
+        },
+        {
+          "id": "item_14",
+          "name": "Veg Sandwich",
+          "description": "Fresh vegetable sandwich with sauce",
+          "price": 119,
+          "isVeg": true,
+          "rating": 4.0,
+          "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "8 mins",
+          "inStock": true,
+          "offer": 0
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_3",
+      "categoryName": "Main Course",
+      "items": [
+        {
+          "id": "item_5",
+          "name": "Chicken Curry",
+          "description": "Spicy Indian chicken curry",
+          "price": 269,
+          "isVeg": false,
+          "rating": 4.5,
+          "image": "https://plus.unsplash.com/premium_photo-1661419883163-bb4df1c10109?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "isPopular": true,
+          "isSpecial": false,
+          "prepTime": "22 mins",
+          "inStock": true,
+          "offer": 10
+        },
+        {
+          "id": "item_6",
+          "name": "Veg Pasta",
+          "description": "Creamy pasta with vegetables",
+          "price": 229,
+          "isVeg": true,
+          "rating": 4.2,
+          "image": "https://images.unsplash.com/photo-1525755662778-989d0524087e",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "18 mins",
+          "inStock": true,
+          "offer": 0
+        },
+        {
+          "id": "item_15",
+          "name": "Paneer Butter Masala",
+          "description": "Paneer cooked in rich buttery gravy",
+          "price": 249,
+          "isVeg": true,
+          "rating": 4.6,
+          "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398",
+          "isPopular": true,
+          "isSpecial": true,
+          "prepTime": "20 mins",
+          "inStock": true,
+          "offer": 15
+        },
+        {
+          "id": "item_16",
+          "name": "Chicken Biryani",
+          "description": "Aromatic basmati rice with chicken",
+          "price": 299,
+          "isVeg": false,
+          "rating": 4.7,
+          "image": "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a",
+          "isPopular": true,
+          "isSpecial": true,
+          "prepTime": "25 mins",
+          "inStock": true,
+          "offer": 20
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_4",
+      "categoryName": "Desserts",
+      "items": [
+        {
+          "id": "item_7",
+          "name": "Chocolate Cake",
+          "description": "Rich chocolate layered cake",
+          "price": 129,
+          "isVeg": true,
+          "rating": 4.7,
+          "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
+          "isPopular": true,
+          "isSpecial": false,
+          "prepTime": "8 mins",
+          "inStock": true,
+          "offer": 10
+        },
+        {
+          "id": "item_8",
+          "name": "Cheesecake",
+          "description": "Creamy New York cheesecake",
+          "price": 159,
+          "isVeg": true,
+          "rating": 4.6,
+          "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b",
+          "isPopular": true,
+          "isSpecial": false,
+          "prepTime": "8 mins",
+          "inStock": true,
+          "offer": 10
+        },
+        {
+          "id": "item_17",
+          "name": "Brownie with Ice Cream",
+          "description": "Warm brownie served with vanilla ice cream",
+          "price": 179,
+          "isVeg": true,
+          "rating": 4.8,
+          "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c",
+          "isPopular": true,
+          "isSpecial": true,
+          "prepTime": "10 mins",
+          "inStock": true,
+          "offer": 15
+        },
+        {
+          "id": "item_18",
+          "name": "Fruit Salad",
+          "description": "Fresh seasonal fruits",
+          "price": 109,
+          "isVeg": true,
+          "rating": 4.2,
+          "image": "https://plus.unsplash.com/premium_photo-1664478279991-832059d65835?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "isPopular": false,
+          "isSpecial": false,
+          "prepTime": "5 mins",
+          "inStock": true,
+          "offer": 0
+        }
+      ]
+    }
+  ]
+}
