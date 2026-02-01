@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const OrderSummary = ({ subtotal }) => {
   const deliveryFee = 15;
   const tax = Math.round(subtotal * 0.08);
@@ -31,9 +33,9 @@ const OrderSummary = ({ subtotal }) => {
         <span className="text-orange-500">₹{total}</span>
       </div>
 
-      <button className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold">
+      <NavLink to=""><button className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold">
         Proceed to Checkout
-      </button>
+      </button></NavLink>
 
       <div className="mt-6 bg-blue-50 p-4 rounded-lg text-sm text-blue-700">
         <p className="font-semibold mb-2">Delivery Info:</p>
