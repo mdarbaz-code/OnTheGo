@@ -33,7 +33,7 @@ const OrderSummary = ({ subtotal }) => {
         <span className="text-orange-500">₹{total}</span>
       </div>
 
-      <NavLink to=""><button className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold">
+      <NavLink to="/PaymentsPage"><button className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold">
         Proceed to Checkout
       </button></NavLink>
 
