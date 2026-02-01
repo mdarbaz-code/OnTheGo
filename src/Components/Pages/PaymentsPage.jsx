@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MapPin, IndianRupee, Package, ArrowLeft } from "lucide-react";
-import PaymentPageTitle from "./Components/Payments/PaymentPageTitle";
-import RadioCard from "./Components/Payments/RadioCard";
+import PaymentPageTitle from "../Core/components/Payments/PaymentPageTitle";
+import RadioCard from "../Core/components/Payments/RadioCard";
 import { NavLink } from "react-router";
 
 
