@@ -38,7 +38,7 @@ const RestaurantMenu = () => {
   return (
     <div className="mt-10">
       {/* Restaurant Header */}
-      <div className="w-10/12 mx-auto bg-white shadow-lg rounded-2xl p-6">
+      <div className="w-10/12 mx-auto bg-white shadow-xl rounded-2xl p-6">
         <Typography variant="h1" size="3xl" weight="bold" color="primary">
           {resInfo.restaurant.name}
         </Typography>
