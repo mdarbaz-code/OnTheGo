@@ -1,5 +1,5 @@
-import Button from "../../UI/components/Button";
-import Typography from "../../UI/components/Typography";
+import Button from "../../../UI/components/Button";
+import Typography from "../../../UI/components/Typography";
 import SearchBar from "./RestaurantSearchBar";
 
 const MenuFilters = ({

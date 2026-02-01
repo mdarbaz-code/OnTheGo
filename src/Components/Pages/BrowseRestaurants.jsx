@@ -5,7 +5,7 @@ import restaurants from "../../data/restaurants";
 const BrowseRestaurants = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-gradient-to-r from-orange-500 to-orange-400 text-white py-12 px-6">
+      <div className="bg-linear-to-r from-orange-500 to-orange-400 text-white py-12 px-6">
         <h1 className="text-4xl font-bold">Browse Restaurants</h1>
         <p className="mt-2">
           Discover amazing restaurants and order your favorite food

@@ -1,4 +1,4 @@
-import Input from "../../UI/components/Input";
+import Input from "../../../UI/components/Input";
 import { FiSearch } from "react-icons/fi";
 
 const SearchBar = ({ searchText, setSearchText }) => {
