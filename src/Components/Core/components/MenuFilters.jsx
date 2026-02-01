@@ -1,6 +1,6 @@
 import Button from "../../UI/components/Button";
 import Typography from "../../UI/components/Typography";
-import SearchBar from "./SearchBar";
+import SearchBar from "./RestaurantSearchBar";
 
 const MenuFilters = ({
   sortOption,
