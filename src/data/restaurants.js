@@ -8,7 +8,9 @@ const restaurants = [
     time: "25-35 min",
     minOrder: "₹10",
     delivery: "₹15 delivery",
-    image: "https://i.ytimg.com/vi/WYfZpUya6NE/maxresdefault.jpg"
+    image: "https://i.ytimg.com/vi/WYfZpUya6NE/maxresdefault.jpg",
+    discount: "50%",
+    status: "Open Now"
   },
   {
     id: 2,
@@ -19,7 +21,9 @@ const restaurants = [
     time: "20-30 min",
     minOrder: "₹8",
     delivery: "₹12 delivery",
-    image: "https://threebestrated.in/images/RoasteryLounge-Gulbarga-KA-1.jpeg"
+    image: "https://threebestrated.in/images/RoasteryLounge-Gulbarga-KA-1.jpeg",
+    discount: "30%",
+    status: "Open Now"
   },
   {
     id: 3,
@@ -30,7 +34,9 @@ const restaurants = [
     time: "30-40 min",
     minOrder: "₹12",
     delivery: "₹18 delivery",
-    image: "https://i.ytimg.com/vi/bjkMHtpUqjk/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLCOiffbFKEchfF4ATrsPMe-QM8eGQ"
+    image: "https://i.ytimg.com/vi/bjkMHtpUqjk/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLCOiffbFKEchfF4ATrsPMe-QM8eGQ",
+    discount: "20%",
+    status: "Open Now"
   },
   {
     id: 4,
@@ -41,7 +47,9 @@ const restaurants = [
     time: "15-25 min",
     minOrder: "₹5",
     delivery: "₹10 delivery",
-    image: "https://img.restaurantguru.com/read-Temptations-Cafe-exterior-2024-11.jpg"
+    image: "https://img.restaurantguru.com/read-Temptations-Cafe-exterior-2024-11.jpg",
+    discount: "40%",
+    status: "Open Now"
   },
   {
     id: 5,
@@ -52,7 +60,9 @@ const restaurants = [
     time: "25-35 min",
     minOrder: "₹15",
     delivery: "₹20 delivery",
-    image: "https://i.ytimg.com/vi/kSCXWlWSmE0/maxresdefault.jpg"
+    image: "https://i.ytimg.com/vi/kSCXWlWSmE0/maxresdefault.jpg",
+    discount: "25%",
+    status: "Open Now"
   },
   {
     id: 6,
@@ -63,7 +73,48 @@ const restaurants = [
     time: "20-30 min",
     minOrder: "₹7",
     delivery: "₹14 delivery",
-    image: "https://b.zmtcdn.com/data/pictures/2/20146352/006f63b224665241835129ec57c66847.jpeg"
+    image: "https://b.zmtcdn.com/data/pictures/2/20146352/006f63b224665241835129ec57c66847.jpeg",
+    discount: "15%",
+    status: "Open Now"
+  },
+  {
+    id: 7,
+    name: "Govinda Pure veg",
+    rating: 4.6,
+    reviews: 500,
+    cuisine: "Indian",
+    time: "20-30 min",
+    minOrder: "₹10",
+    delivery: "₹15 delivery",
+    image: "https://www.shutterstock.com/image-photo/london-uk-june-5-2019-600w-1426729064.jpg",
+    discount: "20%",
+    status: "Open Now"
+  },
+  {
+    id: 8,
+    name: "RajShani",
+    rating: 4.0,
+    reviews: 420,
+    cuisine: "Indian",
+    time: "25-35 min",
+    minOrder: "₹8",
+    delivery: "₹12 delivery",
+    image: "https://i2.ypcdn.com/blob/73bd0c7e984aecc01a364212483f0c31d59d7048",
+    discount: "15%",
+    status: "Open Now"
+  },
+  {
+    id: 9,
+    name: "Donuts Hut",
+    rating: 2.0,
+    reviews: 300,
+    cuisine: "American",
+    time: "15-25 min",
+    minOrder: "₹5",
+    delivery: "₹10 delivery",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/0f/6c/74/e5/donut-hut.jpg",
+    discount: "10%",
+    status: "Open Now"
   }
 ];
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Typography from "../UI/components/Typography";
 import MenuFilters from "../Core/components/RestaurantMenu/MenuFilters";
-import ItemCategory from "../Core/components/RestaurantMenu/ItemCatogary";
+import ItemCategory from "../Core/components/RestaurantMenu/ItemCategory";
 import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {

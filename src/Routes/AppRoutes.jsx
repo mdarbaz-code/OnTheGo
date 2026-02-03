@@ -9,10 +9,12 @@ import BrowseRestaurants from "../Components/Pages/BrowseRestaurants";
 import CartSummary from "../Components/Pages/CartSummary";
 import PaymentsPage from "..//Components/Pages/PaymentsPage"
 import HelpPage from "../Components/Pages/HelpPage";
+import Layout from "../Components/Core/components/Layout";
 
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Layout/>} >
       <Route path="/" element={<Home />} />
       <Route path="/restaurants" element={<BrowseRestaurants />} />
       <Route path="/restaurants/:id" element={<RestaurantMenu />} />
@@ -21,6 +23,7 @@ export default function AppRoutes() {
       <Route path="/cart" element={<CartSummary />} />
       <Route path="/PaymentsPage" element={<PaymentsPage />} />
       <Route path="/helpandsupport" element={<HelpPage />} />
+      </Route>
     </Routes>
   );
 }
