@@ -105,7 +105,7 @@ const restaurants = [
   },
   {
     id: 9,
-    name: "Donuts Hut",
+    name: "Walnut House",
     rating: 2.0,
     reviews: 300,
     cuisine: "American",

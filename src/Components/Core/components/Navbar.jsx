@@ -8,24 +8,31 @@ import { IoCart } from "react-icons/io5";
 import Input from "../../UI/components/Input";
 import { authUtils } from "../../../utils/authUtils.js";
 import { Link, useNavigate } from "react-router-dom";
+import { getSearchData } from "../../../utils/getSearchData"; // ✅ search helper
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location, setLocation] = useState("Fetching location...");
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const currentUser = authUtils.getCurrentUser();
   const isAuthenticated = !!currentUser;
+
+  const searchData = getSearchData();
+  const filteredResults = searchData.filter((entry) =>
+    entry.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   const handleAuthClick = () => {
     navigate(isAuthenticated ? "/profile" : "/login");
   };
 
   useEffect(() => {
-    // const cachedLocation = localStorage.getItem("userLocation");
-    // if (cachedLocation) {
-    //   setLocation(cachedLocation);
-    //   return;
-    // }
+    const cachedLocation = localStorage.getItem("userLocation");
+    if (cachedLocation) {
+      setLocation(cachedLocation);
+      return;
+    }
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -33,11 +40,9 @@ export default function Navbar() {
           const { latitude, longitude } = position.coords;
           try {
             const res = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?lat=12.921203&lon=77.61019&format=json`);
+              `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}`,
+            );
             const data = await res.json();
-            console.log(data);
-
-            // ✅ Correct way to access display_name
             const loc = data.display_name || `${latitude}, ${longitude}`;
             setLocation(loc);
             localStorage.setItem("userLocation", loc);
@@ -93,12 +98,56 @@ export default function Navbar() {
       </nav>
 
       {/* Right Actions (Desktop) */}
-      <div className="hidden md:flex h-14 gap-x-4 items-baseline justify-center">
+      <div className="hidden md:flex h-14 gap-x-4 items-baseline justify-center relative">
+        {/* ✅ Search Input */}
         <Input
           type="text"
-          placeholder="Search Food"
-          rightIcon={<FaSearch size="1.5rem" color="orange" />}
+          placeholder="Search Restaurants or Food"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          rightIcon={
+            searchTerm.split("").length > 0 ? (
+              <IoClose onClick={() => setSearchTerm("")} />
+            ) : (
+              <FaSearch size="1.5rem" color="orange" />
+            )
+          }
         />
+
+        {/* ✅ Search Results Dropdown */}
+        {searchTerm && (
+          <div className="absolute top-full left-0 w-64 bg-white shadow-md mt-2 rounded-md z-50 max-h-60 overflow-y-auto">
+            {filteredResults.length > 0 ? (
+              filteredResults.map((entry) => (
+                <div
+                  key={entry.id}
+                  className="p-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() =>
+                    entry.type === "restaurant" || entry.type === "food"
+                      ? navigate(`/restaurants/${entry.restoId}`)
+                      : console.log(entry.restoId)
+                  }
+                >
+                  {" "}
+                  <Typography variant="span" weight="semibold">
+                    {" "}
+                    {entry.name}{" "}
+                  </Typography>{" "}
+                  <Typography variant="span" className="text-sm text-gray-500">
+                    {" "}
+                    {entry.type == "restaurant" && entry.type == "food"
+                      ? entry.restaurantName
+                      : `Food • ${entry.restaurantName}`}{" "}
+                  </Typography>{" "}
+                </div>
+              ))
+            ) : (
+              <div className="p-2 text-gray-500">No matches found</div>
+            )}
+          </div>
+        )}
+
+        {/* Profile Button */}
         <Button
           className="border border-gray-300 flex items-center gap-2"
           variant="outline"
@@ -110,6 +159,8 @@ export default function Navbar() {
             {isAuthenticated ? "Profile" : "Login"}
           </Typography>
         </Button>
+
+        {/* Cart Button */}
         <Button
           className="border border-gray-300 flex items-center gap-2"
           variant="outline"
@@ -135,11 +186,63 @@ export default function Navbar() {
       {/* Mobile Menu Drawer */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col gap-4 p-4 md:hidden z-50">
+          {/* ✅ Mobile Search */}
           <Input
             type="text"
-            placeholder="Search Food"
-            rightIcon={<FaSearch size="1.5rem" color="orange" />}
+            placeholder="Search Restaurants or Food"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            rightIcon={
+              searchTerm.split("").length > 0 ? (
+                <IoClose onClick={() => setSearchTerm("")} />
+              ) : (
+                <FaSearch size="1.5rem" color="orange" />
+              )
+            }
           />
+
+          {searchTerm && (
+            <div className="bg-white shadow-md rounded-md">
+              {filteredResults.length > 0 ? (
+                filteredResults.map((entry) => (
+                  <div
+                    key={entry.name}
+                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      if (
+                        entry.type === "restaurant" ||
+                        entry.type === "food"
+                      ) {
+                        navigate(`/restaurants/${entry.restoId}`);
+                        setMenuOpen(false);
+                      } else {
+                        console.log(entry.restoId);
+                      }
+                    }}
+                  >
+                    {" "}
+                    <Typography variant="span" weight="semibold">
+                      {" "}
+                      {entry.name}{" "}
+                    </Typography>{" "}
+                    <Typography
+                      variant="span"
+                      className="text-sm text-gray-500"
+                    >
+                      {" "}
+                      {entry.type == "restaurant" && entry.type == "food"
+                        ? entry.restaurantName
+                        : `Food • ${entry.restaurantName}`}{" "}
+                    </Typography>{" "}
+                  </div>
+                ))
+              ) : (
+                  <div className="p-2 text-gray-500">No matches found</div>
+              )}
+            </div>
+          )}
+
+          {/* Profile & Cart */}
           <Button variant="outline" size="sm" onClick={handleAuthClick}>
             <IoPerson />
             <Typography variant="span" color="primary" weight="semibold">
@@ -154,6 +257,8 @@ export default function Navbar() {
               </Typography>
             </Link>
           </Button>
+
+          {/* Location */}
           <div className="flex items-center gap-2">
             <IoLocation />
             <Typography variant="span">

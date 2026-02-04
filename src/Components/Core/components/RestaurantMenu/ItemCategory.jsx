@@ -26,7 +26,7 @@ const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
 
   return (
     <div className="mt-10">
-      <Typography variant="h2" size="2xl" weight="bold" className="mx-16">
+      <Typography variant="h2" size="2xl" weight="bold">
         {category.categoryName}
       </Typography>
 
@@ -44,6 +44,7 @@ const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
               <img
                 src={item.image}
                 alt={item.name}
+                loading="lazy"
                 className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-black/40 to-transparent" />
