@@ -29,14 +29,12 @@ export default function HeroSection() {
 
           {/* Delivery / Pickup Toggle */}
           <div className="bg-white p-4 flex-col rounded  w-140 ">
-            <div className="flex gap-4 ">
-              <Button variant="warning" size="sm">
+            {/* <div className="flex gap-4 ">
+              <Input type={"radio"} label={"Delivery Option"}  variant="warning" size="sm">
                 Delivery
-              </Button>
-              <Button variant="outline" size="sm">
-                Pickup
-              </Button>
-            </div>
+              </Input>
+             <Input label="" type="radio" name="role" options={[ { label: "Admin", value: "admin" }, { label: "User", value: "user" }, { label: "Guest", value: "guest" } ]} required />
+            </div> */}
 
             {/* Location Input */}
             <div className="mt-4 flex   ">
@@ -201,7 +199,7 @@ export default function HeroSection() {
 </section>
 
       {/* Featured Restaurants */}
-      <section className="px-6 py-16 md:px-20 bg-white">
+      <section className="px-6 py-16 md:px-20 bg-white flex flex-col justify-center items-center ">
         <Typography
           variant="h2"
           weight="bold"
@@ -211,12 +209,12 @@ export default function HeroSection() {
         >
           Featured Restaurants
         </Typography>
-        <div className="  flex gap-6 overflow-x-auto w-full pb-4">
+        <div className="  flex gap-6 overflow-x-auto w-full pb-4 mb-8 ">
           {restaurants.map((res, i) => (
             <div key={i} className=" min-w-76 shadow-2xl p-4 rounded-xl text-center">
               <Image
                 src={res.image}
-                alt={res.name}
+                alt={res.name }
                 size="xxl"
                 shape="rounded"
                 fallback="Resto Image"
@@ -224,7 +222,7 @@ export default function HeroSection() {
               />
               <Typography
                 variant="h6"
-                className="text-[1.7rem]"
+                className="text-[1.7rem] line-clamp-1"
                 weight="bold"
                 color="primary"
               >
@@ -240,11 +238,11 @@ export default function HeroSection() {
                 {res.status}
               </Typography>
               <br /> <br />
-              <Link to={`/restaurants/${res.id}`} className=" px-4 py-2 rounded bg-red-400 text-white " >Explore</Link>
+              <Link to={`/restaurants/${res.id}`} className="" ><Button variant="warning" >Explore</Button></Link>
             </div>
           ))}
         </div>
-        <Link to={"/restaurants"} >More Resturant</Link>
+        <Link to={"/restaurants"} className="" ><Button>More Resturant</Button></Link>
       </section>
 
 
