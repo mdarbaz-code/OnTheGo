@@ -95,17 +95,20 @@ export default function Navbar() {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex gap-2 items-center">
-        <Typography variant="span" weight="bold">
+      <nav
+      title={location}
+        className="hidden md:flex gap-2 items-baseline min-w-[40%] text-nowrap overflow-hidden px-4"
+      >
+        <Typography variant="span" weight="bold" className={""}>
           Deliver To:
         </Typography>
         <IoLocation />
-        <Typography variant="span">{truncateText(location, 25)}</Typography>
+        <Typography  variant="span">{truncateText(location, 50)}</Typography>
       </nav>
 
       {/* Right Actions (Desktop) */}
-      <div className="hidden md:flex h-14 gap-x-4 items-baseline justify-center relative">
-        {/* ✅ Search Input - Disabled on Auth Pages */}
+      <div className="hidden md:flex h-14 gap-x-4 items-baseline justify-center relative min-w-[30%]">
+        {/* ✅ Search Input */}
         <Input
           type="text"
           placeholder="Search Restaurants or Food"
@@ -131,7 +134,7 @@ export default function Navbar() {
             {filteredResults.length > 0 ? (
               filteredResults.map((entry) => (
                 <div
-                  key={entry.id}
+                  key={entry.name}
                   className="p-2 hover:bg-gray-100 cursor-pointer"
                   onClick={() =>
                     entry.type === "restaurant" || entry.type === "food"
@@ -172,23 +175,14 @@ export default function Navbar() {
         </Button>
 
         {/* Cart Button */}
-        <Button
-          className="border border-gray-300 flex items-center gap-2 relative"
-          variant="outline"
-          size="sm"
-        >
-          <Link to="/cart" className="flex items-center gap-2">
-            {isUserAuthenticated ? <IoCart className="scale-[1.4]" /> : null}
+        {isAuthenticated && (
+          <Button variant="outline" size="sm" className="border border-gray-300 flex items-center gap-2" >
+            <IoCart className={"scale-[1.4]"} />
             <Typography variant="span" color="primary" weight="semibold">
               Cart
             </Typography>
-            {getCartItemCount() > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {getCartItemCount()}
-              </span>
-            )}
-          </Link>
-        </Button>
+          </Button>
+        )}
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -196,7 +190,7 @@ export default function Navbar() {
         className="md:hidden text-2xl"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        {menuOpen ? <IoClose /> : <IoMenu />}
+        {menuOpen ? <IoClose  className="text-red-300" /> : <IoMenu className="text-red-300" />}
       </button>
 
       {/* Mobile Menu Drawer */}
@@ -258,7 +252,7 @@ export default function Navbar() {
                   </div>
                 ))
               ) : (
-                  <div className="p-2 text-gray-500">No matches found</div>
+                <div className="p-2 text-gray-500">No matches found</div>
               )}
             </div>
           )}
@@ -270,25 +264,20 @@ export default function Navbar() {
               {isUserAuthenticated ? "Profile" : "Login"}
             </Typography>
           </Button>
-          <Button variant="outline" size="sm">
-            <Link to="/cart" className="flex items-center gap-2 relative">
+          {isAuthenticated && (
+            <Button variant="outline" size="sm">
               <IoCart />
               <Typography variant="span" color="primary" weight="semibold">
                 Cart
               </Typography>
-              {getCartItemCount() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {getCartItemCount()}
-                </span>
-              )}
-            </Link>
-          </Button>
+            </Button>
+          )}
 
           {/* Location */}
           <div className="flex items-center gap-2">
             <IoLocation />
-            <Typography variant="span">
-              Deliver To: {truncateText(location, 15)}
+            <Typography variant="span" className={"min-w-full overflow-hidden text-wrap"}>
+              Deliver To: {truncateText(location, 60)}
             </Typography>
           </div>
         </div>

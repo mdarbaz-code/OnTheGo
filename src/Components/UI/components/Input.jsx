@@ -26,7 +26,7 @@ const Input = ({
 
   // size control
   const sizeClasses = {
-    sm: "px-2 py-1 text-sm",
+    sm: "px-2 py-1 text-sm ",
     md: "px-3 py-2 text-base",
     lg: "px-4 py-3 text-lg",
   };
@@ -35,7 +35,7 @@ const Input = ({
   const inputType = type === "password" && showPassword ? "text" : type;
 
   return (
-    <div className={`${width === "full" ? "w-full" : width} mb-4 bg-white p-2`}>
+    <div className={`${width === "full" ? "w-full" : width} rounded  mb-4 bg-white p-0`}>
       {/* label */}
       {label && (
         <label className='block mb-1 text-sm font-medium'>
