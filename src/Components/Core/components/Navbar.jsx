@@ -6,8 +6,8 @@ import { IoLocation, IoPerson, IoMenu, IoClose } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import { IoCart } from "react-icons/io5";
 import Input from "../../UI/components/Input";
-import { authUtils } from "../../../utils/authUtils.js";
-import { Link, useNavigate } from "react-router-dom";
+import { authUtils, isAuthenticated } from "../../../utils/authUtils.js";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getSearchData } from "../../../utils/getSearchData"; // ✅ search helper
 
 export default function Navbar() {
@@ -15,8 +15,12 @@ export default function Navbar() {
   const [location, setLocation] = useState("Fetching location...");
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const currentUser = authUtils.getCurrentUser();
-  const isAuthenticated = !!currentUser;
+  const isUserAuthenticated = !!currentUser;
+  
+  // Check if user is on login/signup page
+  const isOnAuthPage = pathname === '/login' || pathname === '/signup';
 
   const searchData = getSearchData();
   const filteredResults = searchData.filter((entry) =>
@@ -24,7 +28,7 @@ export default function Navbar() {
   );
 
   const handleAuthClick = () => {
-    navigate(isAuthenticated ? "/profile" : "/login");
+    navigate(isUserAuthenticated ? "/profile" : "/login");
   };
 
   useEffect(() => {
@@ -99,14 +103,19 @@ export default function Navbar() {
 
       {/* Right Actions (Desktop) */}
       <div className="hidden md:flex h-14 gap-x-4 items-baseline justify-center relative">
-        {/* ✅ Search Input */}
+        {/* ✅ Search Input - Disabled on Auth Pages */}
         <Input
           type="text"
           placeholder="Search Restaurants or Food"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            if (!isOnAuthPage) {
+              setSearchTerm(e.target.value);
+            }
+          }}
+          disabled={isOnAuthPage}
           rightIcon={
-            searchTerm.split("").length > 0 ? (
+            searchTerm.split("").length > 0 && !isOnAuthPage ? (
               <IoClose onClick={() => setSearchTerm("")} />
             ) : (
               <FaSearch size="1.5rem" color="orange" />
@@ -114,8 +123,8 @@ export default function Navbar() {
           }
         />
 
-        {/* ✅ Search Results Dropdown */}
-        {searchTerm && (
+        {/* ✅ Search Results Dropdown - Hidden on Auth Pages */}
+        {searchTerm && !isOnAuthPage && (
           <div className="absolute top-full left-0 w-64 bg-white shadow-md mt-2 rounded-md z-50 max-h-60 overflow-y-auto">
             {filteredResults.length > 0 ? (
               filteredResults.map((entry) => (
@@ -154,9 +163,9 @@ export default function Navbar() {
           size="sm"
           onClick={handleAuthClick}
         >
-          {isAuthenticated ? <IoPerson className="scale-[1.4]" /> : null}
+          {isUserAuthenticated ? <IoPerson className="scale-[1.4]" /> : null}
           <Typography variant="span" color="primary" weight="semibold">
-            {isAuthenticated ? "Profile" : "Login"}
+            {isUserAuthenticated ? "Profile" : "Login"}
           </Typography>
         </Button>
 
@@ -167,7 +176,7 @@ export default function Navbar() {
           size="sm"
         >
           <Link to="/cart" className="flex items-center gap-2">
-            {isAuthenticated ? <IoCart className="scale-[1.4]" /> : null}
+            {isUserAuthenticated ? <IoCart className="scale-[1.4]" /> : null}
             <Typography variant="span" color="primary" weight="semibold">
               Cart
             </Typography>
@@ -191,9 +200,14 @@ export default function Navbar() {
             type="text"
             placeholder="Search Restaurants or Food"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              if (!isOnAuthPage) {
+                setSearchTerm(e.target.value);
+              }
+            }}
+            disabled={isOnAuthPage}
             rightIcon={
-              searchTerm.split("").length > 0 ? (
+              searchTerm.split("").length > 0 && !isOnAuthPage ? (
                 <IoClose onClick={() => setSearchTerm("")} />
               ) : (
                 <FaSearch size="1.5rem" color="orange" />
@@ -201,7 +215,7 @@ export default function Navbar() {
             }
           />
 
-          {searchTerm && (
+          {searchTerm && !isOnAuthPage && (
             <div className="bg-white shadow-md rounded-md">
               {filteredResults.length > 0 ? (
                 filteredResults.map((entry) => (
@@ -246,7 +260,7 @@ export default function Navbar() {
           <Button variant="outline" size="sm" onClick={handleAuthClick}>
             <IoPerson />
             <Typography variant="span" color="primary" weight="semibold">
-              {isAuthenticated ? "Profile" : "Login"}
+              {isUserAuthenticated ? "Profile" : "Login"}
             </Typography>
           </Button>
           <Button variant="outline" size="sm">

@@ -4,6 +4,9 @@ const USERS_STORAGE_KEY = 'foodDeliveryUsers';
 // Password validation regex
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{6,}$/;
 
+export const isAuthenticated = () => {
+  return localStorage.getItem("User") !== null;
+};
 export const authUtils = {
   // Get all users from localStorage
   getAllUsers: () => {
@@ -93,6 +96,7 @@ export const authUtils = {
   setCurrentUser: (user) => {
     try {
       localStorage.setItem('currentUser', JSON.stringify(user));
+      localStorage.setItem('User', JSON.stringify(user)); // For isAuthenticated() check
     } catch (error) {
       console.error('Error storing current user:', error);
     }
@@ -113,6 +117,7 @@ export const authUtils = {
   logout: () => {
     try {
       localStorage.removeItem('currentUser');
+      localStorage.removeItem('User');
     } catch (error) {
       console.error('Error during logout:', error);
     }

@@ -1,4 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { authUtils, isAuthenticated } from "../../utils/authUtils";
 
 // ProfileCard Component
 const ProfileCard = ({ title, children, className = "" }) => {
@@ -621,6 +623,15 @@ const CouponSection = ({ coupons, onApply }) => {
 
 // Main Profilepage Component
 const Profilepage = () => {
+  const navigate = useNavigate();
+  
+  // Check if user is authenticated
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/login', { state: { redirectTo: '/profile', showLoginMessage: false } });
+    }
+  }, [navigate]);
+  
   // Profile State
   const [userProfile, setUserProfile] = useState({
     name: "Shahid Khan",
@@ -817,6 +828,11 @@ const Profilepage = () => {
     );
   };
 
+  const handleLogout = () => {
+    authUtils.logout();
+    navigate('/login', { state: { redirectTo: '/profile', showLoginMessage: false } });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -1006,7 +1022,10 @@ const Profilepage = () => {
           <button className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition-colors">
             Save Changes
           </button>
-          <button className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-colors">
+          <button 
+            onClick={handleLogout}
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-colors"
+          >
             Logout
           </button>
         </div>

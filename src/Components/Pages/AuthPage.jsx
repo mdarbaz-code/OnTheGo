@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { authUtils } from '../../utils/authUtils';
 import ErrorNotification from '../UI/components/ErrorNotification';
+import Notification from '../UI/components/Notification';
 import '../Core/components/Auth.css';
 
 export default function AuthPage({ isSignUp = false }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
+  const [redirectTo, setRedirectTo] = useState('/');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,6 +24,16 @@ export default function AuthPage({ isSignUp = false }) {
     hasNumber: false,
     hasSpecialChar: false
   });
+
+  // Handle redirect and login message from checkout
+  useEffect(() => {
+    if (location.state?.redirectTo) {
+      setRedirectTo(location.state.redirectTo);
+    }
+    if (location.state?.showLoginMessage) {
+      setShowLoginMessage(true);
+    }
+  }, [location.state]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +70,8 @@ export default function AuthPage({ isSignUp = false }) {
     const result = authUtils.login(email, password);
     if (result.success) {
       authUtils.setCurrentUser(result.user);
-      navigate('/');
+      // Redirect to checkout page if coming from checkout, otherwise go home
+      navigate(redirectTo);
     } else {
       setError(result.error);
     }
@@ -77,7 +93,8 @@ export default function AuthPage({ isSignUp = false }) {
     const result = authUtils.signUp(email, password, name);
     if (result.success) {
       authUtils.setCurrentUser(result.user);
-      navigate('/');
+      // Redirect to checkout page if coming from checkout, otherwise go home
+      navigate(redirectTo);
     } else {
       setError(result.error);
     }
@@ -90,6 +107,7 @@ export default function AuthPage({ isSignUp = false }) {
   return (
     <div className="auth-container">
       {error && <ErrorNotification message={error} onClose={() => setError('')} />}
+      {showLoginMessage && <Notification type="info" message="Please login first" onClose={() => setShowLoginMessage(false)} duration={2000} />}
       
       <div className="auth-form-wrapper">
         <h1 className="auth-title">{isSignUp ? 'Sign Up' : 'Login'}</h1>
