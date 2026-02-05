@@ -11,6 +11,8 @@ import PaymentsPage from "..//Components/Pages/PaymentsPage"
 import HelpPage from "../Components/Pages/HelpPage";
 import Layout from "../Components/Core/components/Layout";
 import Profilepage from "../Components/Pages/Profilepage";
+import { isAuthenticated } from "../utils/authUtils";
+const loggedIn = isAuthenticated();
 
 export default function AppRoutes() {
   return (
