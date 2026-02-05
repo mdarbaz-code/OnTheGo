@@ -11,7 +11,7 @@ const SearchBar = ({ searchText, setSearchText }) => {
       leftIcon={<FiSearch />}
       variant="filled"
       size="md"
-      width="w-full md:w-6/12"
+      width="w-full"
     />
   );
 };
