@@ -1,45 +1,36 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import cartData from "../../data/cartData";
 import CartItem from "../Core/components/CartItem";
 import OrderSummary from "../Core/components/OrderSummary";
 import EmptyCart from "../Core/components/EmptyCart";
+import { useCart } from "../../context/CartContext";
 
 const CartSummary = () => {
-  const [cartItems, setCartItems] = useState(cartData);
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
 
   // Increase quantity
   const increaseQty = (id) => {
-    setCartItems(
-      cartItems.map(item =>
-        item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      )
-    );
+    const item = cartItems.find(item => item.id === id);
+    if (item) {
+      updateQuantity(id, item.quantity + 1);
+    }
   };
 
   // Decrease quantity
   const decreaseQty = (id) => {
-    setCartItems(
-      cartItems.map(item =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
+    const item = cartItems.find(item => item.id === id);
+    if (item && item.quantity > 1) {
+      updateQuantity(id, item.quantity - 1);
+    }
   };
 
   // Remove item
   const removeItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    removeFromCart(id);
   };
 
   // Calculate subtotal
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal = getCartTotal();
 
   // Empty cart condition
   if (cartItems.length === 0) {

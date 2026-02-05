@@ -6,12 +6,10 @@ const Restaurant2 = {
     rating: 4.1,
     deliveryTime: "30-45 mins",
     cuisines: ["Cafe", "Continental", "Italian", "Burgers", "Sandwiches"],
-    costForTwo: 350
+    costForTwo: 350,
   },
 
   categories: [
-
-    // 🍟 Appetizers
     {
       categoryId: "cat_appetizers",
       categoryName: "Appetizers",
@@ -23,12 +21,11 @@ const Restaurant2 = {
           price: 194,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://www.acouplecooks.com/wp-content/uploads/2022/06/Cheese-Fries-001.jpg",
           prepTime: "12 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_2",
@@ -37,12 +34,11 @@ const Restaurant2 = {
           price: 150,
           isVeg: true,
           rating: 3.7,
-          image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://www.hungryforever.com/wp-content/uploads/2018/07/Peri-Peri-Fries.jpg",
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_3",
@@ -51,12 +47,11 @@ const Restaurant2 = {
           price: 129,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1548365328-9f547fb0953f?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&q=80",
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_4",
@@ -65,17 +60,15 @@ const Restaurant2 = {
           price: 199,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.4fHv7MNBE1wytkOQag4lpQHaLH?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "14 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
-    // 🍕 Pizza
     {
       categoryId: "cat_pizza",
       categoryName: "Pizza",
@@ -87,12 +80,11 @@ const Restaurant2 = {
           price: 249,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80",
           prepTime: "18 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "rl_item_6",
@@ -101,12 +93,10 @@ const Restaurant2 = {
           price: 279,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image: "https://i.redd.it/tb7co8w2nd051.jpg",
           prepTime: "20 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_7",
@@ -115,12 +105,11 @@ const Restaurant2 = {
           price: 299,
           isVeg: false,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_8",
@@ -129,17 +118,15 @@ const Restaurant2 = {
           price: 319,
           isVeg: true,
           rating: 4.4,
-          image: "https://images.unsplash.com/photo-1548365328-9f547fb0953f?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: true,
+          image:
+            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=600&q=80",
           prepTime: "25 mins",
           inStock: true,
-          offer: 15
-        }
-      ]
+          offer: 15,
+        },
+      ],
     },
 
-    // 🍔 Burgers & Sandwiches
     {
       categoryId: "cat_burgers_sandwiches",
       categoryName: "Burgers & Sandwiches",
@@ -151,12 +138,11 @@ const Restaurant2 = {
           price: 169,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1606755962773-d324e2d53f7b?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80",
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_10",
@@ -165,12 +151,11 @@ const Restaurant2 = {
           price: 199,
           isVeg: false,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
           prepTime: "16 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_11",
@@ -179,12 +164,11 @@ const Restaurant2 = {
           price: 179,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80",
           prepTime: "14 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "rl_item_12",
@@ -193,17 +177,15 @@ const Restaurant2 = {
           price: 199,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://tse2.mm.bing.net/th/id/OIP.Q4Ay7pMsUpISIib62_glQQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
-    // ☕ Beverages (Cold Coffee & More)
     {
       categoryId: "cat_beverages",
       categoryName: "Beverages",
@@ -215,12 +197,11 @@ const Restaurant2 = {
           price: 139,
           isVeg: true,
           rating: 3.9,
-          image: "https://images.unsplash.com/photo-1562059390-a761a084768e?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80",
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_14",
@@ -229,12 +210,11 @@ const Restaurant2 = {
           price: 149,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1551024709-8f23befc6e96?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://tse2.mm.bing.net/th/id/OIP.qKpbou0o8fEkQLnIDI1VUwHaHa?w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_15",
@@ -243,12 +223,11 @@ const Restaurant2 = {
           price: 159,
           isVeg: true,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1588918888915-5beebfdbb76f?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://tse1.mm.bing.net/th/id/OIP.B-vF-f6yxfGatoUPMs8QWgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rl_item_16",
@@ -257,16 +236,15 @@ const Restaurant2 = {
           price: 149,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1565120130296-0599c892d8b8?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://tse3.mm.bing.net/th/id/OIP.KckNxNxb0_6C7se-u7i_jwHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
-    }
-  ]
+          offer: 0,
+        },
+      ],
+    },
+  ],
 };
 
 export default Restaurant2;

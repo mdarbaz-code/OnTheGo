@@ -1,9 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../../../utils/authUtils";
 
 const OrderSummary = ({ subtotal }) => {
+  const navigate = useNavigate();
   const deliveryFee = 15;
   const tax = Math.round(subtotal * 0.08);
   const total = subtotal + deliveryFee + tax;
+
+  const handleCheckout = () => {
+    if (!isAuthenticated()) {
+      // Redirect to login with state indicating they need to checkout
+      navigate('/login', { state: { redirectTo: '/PaymentsPage', showLoginMessage: true } });
+    } else {
+      // User is authenticated, proceed to checkout
+      navigate('/PaymentsPage');
+    }
+  };
 
   return (
     <div className="bg-white rounded-xl shadow p-6 h-fit">
@@ -33,9 +45,12 @@ const OrderSummary = ({ subtotal }) => {
         <span className="text-orange-500">₹{total}</span>
       </div>
 
-      <NavLink to="/PaymentsPage"><button className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold">
+      <button 
+        onClick={handleCheckout}
+        className="w-full mt-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+      >
         Proceed to Checkout
-      </button></NavLink>
+      </button>
 
       <div className="mt-6 bg-blue-50 p-4 rounded-lg text-sm text-blue-700">
         <p className="font-semibold mb-2">Delivery Info:</p>

@@ -1,20 +1,27 @@
+import { useState } from "react";
 import Typography from "../../../UI/components/Typography";
 import Button from "../../../UI/components/Button";
+import Notification from "../../../UI/components/Notification";
+import { useCart } from "../../../../context/CartContext";
 
 const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
+  const { addToCart } = useCart();
+  const [notification, setNotification] = useState(null);
+
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    setNotification(`${item.name} added to cart!`);
+  };
+
   const filteredItems = category.items
+    .filter((item) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase()),
+    )
     .filter((item) => {
-      const matchesSearch = item.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
-
-      const matchesChip =
-        activeFilter === "All" ||
-        (activeFilter === "Popular" && item.isPopular) ||
-        (activeFilter === "Specials" && item.isSpecial) ||
-        (activeFilter === "Vegetarian" && item.isVeg);
-
-      return matchesSearch && matchesChip;
+      if (activeFilter === "All") return true;
+      if (activeFilter === "Popular") return item.isPopular;
+      if (activeFilter === "Specials") return item.isSpecial;
+      if (activeFilter === "Vegetarian") return item.isVeg;
     })
     .sort((a, b) => {
       if (sortOption === "lowToHigh") return a.price - b.price;
@@ -22,94 +29,105 @@ const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
       return 0;
     });
 
-  if (filteredItems.length === 0) return null;
+  if (!filteredItems.length) return null;
 
   return (
-    <div className="mt-10">
-      <Typography variant="h2" size="2xl" weight="bold">
-        {category.categoryName}
-      </Typography>
+    <>
+      {notification && (
+        <Notification
+          message={notification}
+          type="success"
+          onClose={() => setNotification(null)}
+          duration={2000}
+        />
+      )}
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="group bg-white rounded-2xl overflow-hidden 
-  shadow-[0_8px_24px_rgba(0,0,0,0.06)] 
-  hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] 
-  transition-all duration-300 hover:-translate-y-1 flex flex-col"
-          >
-            {/* IMAGE */}
-            <div className="relative overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.name}
-                loading="lazy"
-                className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-black/40 to-transparent" />
-            </div>
+      <div className="mt-8 sm:mt-10">
+        <Typography
+          variant="h2"
+          size="lg sm:2xl"
+          weight="bold"
+          className="mb-2 px-1"
+        >
+          {category.categoryName}
+        </Typography>
 
-            {/* CONTENT */}
-            <div className="p-4 flex flex-col grow space-y-3">
-              {/* BADGES */}
-              <div className="flex gap-2 flex-wrap h-7 items-center">
-                {item.isVeg && (
-                  <span className="text-[11px] font-medium bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                    🥦 Veg
-                  </span>
-                )}
-                {item.isPopular && (
-                  <span className="text-[11px] font-medium bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">
-                    ⭐ Popular
-                  </span>
-                )}
-                {item.isSpecial && (
-                  <span className="text-[11px] font-medium bg-orange-100 text-orange-700 px-2 py-1 rounded-full">
-                    ⚡ Special
-                  </span>
-                )}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
+            >
+              {/* IMAGE */}
+              <div className="relative">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  loading="lazy"
+                  className="w-full h-32 sm:h-40 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+
+                <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
 
-              {/* TITLE + RATING */}
-              <div className="flex justify-between gap-2 items-center min-h-12">
-                <Typography
-                  variant="h3"
-                  weight="semibold"
-                  className="leading-snug line-clamp-2"
-                >
-                  {item.name}
+              {/* CONTENT */}
+              <div className="px-3 py-2 sm:px-4 sm:py-3 flex flex-col flex-1 gap-2">
+                {/* BADGES */}
+                <div className="flex flex-wrap gap-1">
+                  {item.isVeg && (
+                    <span className="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                      Veg
+                    </span>
+                  )}
+                  {item.isPopular && (
+                    <span className="text-[10px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">
+                      Popular
+                    </span>
+                  )}
+                  {item.isSpecial && (
+                    <span className="text-[10px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
+                      Special
+                    </span>
+                  )}
+                </div>
+
+                {/* TITLE + RATING */}
+                <div className="flex justify-between items-start gap-2">
+                  <Typography className="text-sm sm:text-base font-semibold line-clamp-1">
+                    {item.name}
+                  </Typography>
+
+                  <span className="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-medium">
+                    ⭐ {item.rating}
+                  </span>
+                </div>
+
+                {/* DESCRIPTION */}
+                <Typography className="text-xs sm:text-sm text-gray-500 line-clamp-1">
+                  {item.description}
                 </Typography>
 
-                <div className="flex items-center gap-1 text-sm text-blue-600">
-                  ⭐ <span>{item.rating || "4.2"}</span>
+                {/* PRICE + BUTTON */}
+                <div className="mt-auto flex items-center justify-between pt-2">
+                  <span className="text-base sm:text-lg font-bold text-orange-500">
+                    ₹{item.price}
+                  </span>
+
+                  <Button
+                    variant="primary"
+                    size="xs sm:sm"
+                    className=" px-3 sm:px-4 active:scale-95 transition-transform"
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    Add
+                  </Button>
                 </div>
               </div>
-
-              {/* DESCRIPTION */}
-              <Typography size="xs" color="muted" className="line-clamp-2">
-                {item.description}
-              </Typography>
-
-              {/* PRICE + BUTTON */}
-              <div className="mt-auto flex items-center justify-between pt-2">
-                <Typography weight="bold" size="lg" className="text-orange-500">
-                  ₹{item.price}
-                </Typography>
-
-                <Button
-                  variant="primary"
-                  size="xs"
-                  className="rounded-full px-5 shadow-md"
-                >
-                  Add
-                </Button>
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -11,9 +11,9 @@ const MenuFilters = ({
   setSearchText,
 }) => {
   return (
-    <div className="mt-8 flex flex-col items-center gap-6">
-      {/* Tabs */}
-      <div className="flex gap-3 flex-wrap justify-center">
+    <div className="mt-6 sm:mt-8 flex flex-col gap-5">
+
+      <div className="flex gap-2 flex-wrap justify-center">
         {["All", "Popular", "Specials", "Vegetarian"].map((filter) => (
           <Button
             key={filter}
@@ -21,34 +21,27 @@ const MenuFilters = ({
             size="sm"
             onClick={() => setActiveFilter(filter)}
           >
-            {filter === "Popular" && "⭐ "}
-            {filter === "Specials" && "⚡ "}
-            {filter === "Vegetarian" && "🥦 "}
             {filter}
           </Button>
         ))}
       </div>
 
-      {/* Search + Sort */}
-      <div className="flex flex-col md:flex-row gap-6 items-center justify-between w-8/12 mx-auto">
-        <SearchBar searchText={searchText} setSearchText={setSearchText} />
+      <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
+        <div className="w-full sm:w-6/12">
+          <SearchBar searchText={searchText} setSearchText={setSearchText} />
+        </div>
 
-        <div className="flex items-center gap-3">
-          <Typography variant="small" weight="semibold">
-            Sort By:
-          </Typography>
-
-          <div className="border border-gray-300 rounded-md px-3 py-2 bg-white focus-within:ring-2 focus-within:ring-yellow-400">
-            <select
-              value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)}
-              className="w-full outline-none bg-transparent"
-            >
-              <option value="">Relevance</option>
-              <option value="lowToHigh">Price: Low → High</option>
-              <option value="highToLow">Price: High → Low</option>
-            </select>
-          </div>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <Typography variant="small" weight="semibold">Sort By:</Typography>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm"
+          >
+            <option value="">Relevance</option>
+            <option value="lowToHigh">Price: Low → High</option>
+            <option value="highToLow">Price: High → Low</option>
+          </select>
         </div>
       </div>
     </div>

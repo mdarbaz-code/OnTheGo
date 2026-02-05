@@ -1,4 +1,4 @@
-const Restaurant1= {
+const Restaurant1 = {
   restaurant: {
     id: "1",
     name: "Red Kababish Arabian Mughlai Chinese",
@@ -6,11 +6,10 @@ const Restaurant1= {
     rating: 4.0,
     deliveryTime: "30-40 mins",
     cuisines: ["Mughlai", "Chinese", "Arabian", "North Indian"],
-    costForTwo: 450
+    costForTwo: 450,
   },
 
   categories: [
-
     // 🍛 Biryani / Rice
     {
       categoryId: "cat_biryani",
@@ -23,12 +22,13 @@ const Restaurant1= {
           price: 299,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1606755962773-d324e2d53f7b?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://vismaifood.com/storage/app/uploads/public/980/eb9/ed6/thumb__1200_0_0_0_auto.jpg",
           isPopular: true,
           isSpecial: true,
           prepTime: "25 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "rb_item_2",
@@ -37,12 +37,13 @@ const Restaurant1= {
           price: 259,
           isVeg: false,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1559628233-7f9a4318b377?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse1.mm.bing.net/th/id/OIP.3Ew6NC0brdCXry_2kz-K5gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: false,
           prepTime: "25 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "rb_item_3",
@@ -51,12 +52,13 @@ const Restaurant1= {
           price: 199,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse2.mm.bing.net/th/id/OIP.LadujoU81UAUhQjy9gElUwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: false,
           isSpecial: false,
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rb_item_4",
@@ -65,14 +67,15 @@ const Restaurant1= {
           price: 179,
           isVeg: false,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1579999079635-e6153702ee8d?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://cdn.loveandlemons.com/wp-content/uploads/2025/02/301_LLBlog_FriedRice_47795-recipe.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
     // 🍗 Starters & Kebabs
@@ -87,12 +90,13 @@ const Restaurant1= {
           price: 229,
           isVeg: false,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.ctfassets.net/3s5io6mnxfqz/2QfgYEh5BLQWthT7xtaDZy/183fe36789674eb44ebd64ecc111a7c1/AdobeStock_242313610.jpeg?w=1920",
           isPopular: true,
           isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "rb_item_6",
@@ -101,12 +105,13 @@ const Restaurant1= {
           price: 249,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1589987603704-e8699b1ddb2c?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.mNjjgLSAih5m6Rx-zoUVXgHaHK?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "20 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "rb_item_7",
@@ -115,12 +120,13 @@ const Restaurant1= {
           price: 189,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&auto=format&fit=crop&q=60",
           isPopular: false,
           isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rb_item_8",
@@ -129,14 +135,15 @@ const Restaurant1= {
           price: 169,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&auto=format&fit=crop&q=60",
           isPopular: false,
           isSpecial: false,
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
     // 🍜 Chinese & Indo-Chinese
@@ -151,12 +158,13 @@ const Restaurant1= {
           price: 199,
           isVeg: false,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1622199486540-3b0d3cbf3c8d?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.DolCp7XhjOVNcVP1KXVQCAHaJ4?w=900&h=1200&rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: false,
           prepTime: "16 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rb_item_10",
@@ -165,12 +173,13 @@ const Restaurant1= {
           price: 119,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1512058564366-c9e7c0fa294c?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://myfoodstory.com/wp-content/uploads/2016/07/Chicken-Manchow-Soup-2.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "12 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rb_item_11",
@@ -179,12 +188,13 @@ const Restaurant1= {
           price: 159,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://www.cookwithnabeela.com/wp-content/uploads/2024/02/VegetableFriedRice.webp",
           isPopular: false,
           isSpecial: false,
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "rb_item_12",
@@ -193,16 +203,17 @@ const Restaurant1= {
           price: 229,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://th.bing.com/th/id/OIP.zkU64CfbQSK9aSCISR1VqgHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "18 mins",
           inStock: true,
-          offer: 8
-        }
-      ]
-    }
-  ]
+          offer: 8,
+        },
+      ],
+    },
+  ],
 };
 
 export default Restaurant1;

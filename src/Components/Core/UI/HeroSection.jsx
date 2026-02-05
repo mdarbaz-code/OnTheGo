@@ -47,10 +47,10 @@ export default function HeroSection() {
   return (
     <main className="font-sans bg-white w-full">
       {" "}
-      <section className="bg-[#ffb81f] w-full py-16 flex justify-between overflow-hidden">
+      <section className="bg-[#ffb81f] w-full min-h-[80dvh] py-16 flex flex-col sm:flex-row justify-start align-top overflow-hidden">
         {" "}
         {/* Left Content */}{" "}
-        <div className="m-auto w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] min-w-[18rem] px-6">
+        <div className="mt-[8dvh] sm:m-auto w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] min-w-[18rem] px-6">
           {" "}
           <Typography
             variant="h1"
@@ -105,7 +105,7 @@ export default function HeroSection() {
             </div>{" "}
             {/* Dropdown Results */}{" "}
             {resto.address && !selectedRestaurant && (
-              <div className="absolute top-full left-0 w-full bg-white shadow-lg mt-2 rounded-md z-50 max-h-60 overflow-y-auto border border-gray-200">
+              <div className="absolute top-full left-0 w-full bg-white shadow-lg mt-2 rounded-md z-50 max-h-60 overflow-y-auto border border-gray-200 z-50">
                 {" "}
                 {matchingRestaurants.length > 0 ? (
                   matchingRestaurants.map((res) => (

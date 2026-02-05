@@ -7,6 +7,7 @@ const Restaurant4 = {
     cuisines: ["Fast Food", "Burgers"],
     costForTwo: 299,
   },
+
   categories: [
     {
       categoryId: "cat_burgers",
@@ -20,7 +21,7 @@ const Restaurant4 = {
           isVeg: false,
           rating: 4.5,
           image:
-            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
           isPopular: true,
           isSpecial: false,
           prepTime: "15 mins",
@@ -35,7 +36,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.4,
           image:
-            "https://images.unsplash.com/photo-1606755962773-d324e2d53f7b?w=400&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80",
           isPopular: true,
           isSpecial: false,
           prepTime: "12 mins",
@@ -50,7 +51,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.2,
           image:
-            "https://images.unsplash.com/photo-1610614819513-58e34989848b?w=400&auto=format&fit=crop&q=60",
+            "https://img.freepik.com/premium-photo/supreme-veggie-burger-deluxe_961875-335128.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
@@ -65,7 +66,7 @@ const Restaurant4 = {
           isVeg: false,
           rating: 4.6,
           image:
-            "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&auto=format&fit=crop&q=60",
+            "https://tse2.mm.bing.net/th/id/OIP.00Zt28yvwPEWX6os05zEZQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "16 mins",
@@ -74,6 +75,7 @@ const Restaurant4 = {
         },
       ],
     },
+
     {
       categoryId: "cat_wraps",
       categoryName: "Wraps",
@@ -86,7 +88,7 @@ const Restaurant4 = {
           isVeg: false,
           rating: 4.3,
           image:
-            "https://images.unsplash.com/photo-1625943555419-56a2cb596640?w=400&auto=format&fit=crop&q=60",
+            "https://th.bing.com/th/id/OIP.ENsi3B8uSqUOsTcs8hzN3AHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: false,
           prepTime: "14 mins",
@@ -101,7 +103,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.4,
           image:
-            "https://images.unsplash.com/photo-1645473731592-b4c3aebfb0a8?w=400&auto=format&fit=crop&q=60",
+            "https://img.freepik.com/premium-photo/paneer-tikka-wrap-isolated-white-background_1166140-11181.jpg?w=2000",
           isPopular: false,
           isSpecial: false,
           prepTime: "12 mins",
@@ -116,7 +118,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.1,
           image:
-            "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
+            "https://tse2.mm.bing.net/th/id/OIP.3zyw6QomoObFT34O6B6D2wHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
@@ -131,7 +133,7 @@ const Restaurant4 = {
           isVeg: false,
           rating: 4.5,
           image:
-            "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&auto=format&fit=crop&q=60",
+            "https://tse2.mm.bing.net/th/id/OIP.nYj4oqNivU7NsynXEfXtkwHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "15 mins",
@@ -140,6 +142,7 @@ const Restaurant4 = {
         },
       ],
     },
+
     {
       categoryId: "cat_pizza",
       categoryName: "Pizza",
@@ -152,7 +155,7 @@ const Restaurant4 = {
           isVeg: false,
           rating: 4.6,
           image:
-            "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
           isPopular: true,
           isSpecial: true,
           prepTime: "20 mins",
@@ -167,7 +170,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.4,
           image:
-            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80",
           isPopular: true,
           isSpecial: false,
           prepTime: "18 mins",
@@ -182,7 +185,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.3,
           image:
-            "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&auto=format&fit=crop&q=60",
+            "https://i0.wp.com/www.thursdaynightpizza.com/wp-content/uploads/2022/06/veggie-pizza-side-view-out-of-oven.png?resize=720%2C480&is-pending-load=1#038;ssl=1",
           isPopular: false,
           isSpecial: false,
           prepTime: "19 mins",
@@ -197,7 +200,7 @@ const Restaurant4 = {
           isVeg: true,
           rating: 4.7,
           image:
-            "https://images.unsplash.com/photo-1548365328-9f547fb0953f?w=400&auto=format&fit=crop&q=60",
+            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=600&q=80",
           isPopular: true,
           isSpecial: true,
           prepTime: "22 mins",
