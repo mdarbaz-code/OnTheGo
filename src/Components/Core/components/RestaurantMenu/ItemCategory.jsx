@@ -1,130 +1,138 @@
-import { useMemo } from "react";
+import { useState } from "react";
 import Typography from "../../../UI/components/Typography";
 import Button from "../../../UI/components/Button";
+import Notification from "../../../UI/components/Notification";
+import { useCart } from "../../../../context/CartContext";
 
 const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
-  const filteredItems = useMemo(() => {
-    return category.items
-      .filter((item) => {
-        const matchesSearch = item.name
-          .toLowerCase()
-          .includes(searchText.toLowerCase());
+  const { addToCart } = useCart();
+  const [notification, setNotification] = useState(null);
 
-        const matchesChip =
-          activeFilter === "All" ||
-          (activeFilter === "Popular" && item.isPopular) ||
-          (activeFilter === "Specials" && item.isSpecial) ||
-          (activeFilter === "Vegetarian" && item.isVeg);
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    // Show notification
+    setNotification(`${item.name} added to cart!`);
+  };
 
-        return matchesSearch && matchesChip;
-      })
-      .sort((a, b) => {
-        if (sortOption === "lowToHigh") return a.price - b.price;
-        if (sortOption === "highToLow") return b.price - a.price;
-        return 0;
-      });
-  }, [category.items, searchText, activeFilter, sortOption]);
+  const filteredItems = category.items
+    .filter((item) => {
+      const matchesSearch = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
 
-  if (filteredItems.length === 0) {
-    return (
-      <div className="mt-6 text-center text-gray-400 text-sm">
-        No items found in this category 😕
-      </div>
-    );
-  }
+      const matchesChip =
+        activeFilter === "All" ||
+        (activeFilter === "Popular" && item.isPopular) ||
+        (activeFilter === "Specials" && item.isSpecial) ||
+        (activeFilter === "Vegetarian" && item.isVeg);
+
+      return matchesSearch && matchesChip;
+    })
+    .sort((a, b) => {
+      if (sortOption === "lowToHigh") return a.price - b.price;
+      if (sortOption === "highToLow") return b.price - a.price;
+      return 0;
+    });
+
+  if (filteredItems.length === 0) return null;
 
   return (
-    <div className="mt-6">
-      <Typography variant="h2" size="lg" weight="bold" className="mb-1">
-        {category.categoryName}
-      </Typography>
+    <>
+      {notification && (
+        <Notification
+          message={notification}
+          type="warning"
+          onClose={() => setNotification(null)}
+          duration={2000}
+        />
+      )}
+      <div className="mt-10">
+        <Typography variant="h2" size="2xl" weight="bold">
+          {category.categoryName}
+        </Typography>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-[0_6px_22px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col"
-          >
-            {/* IMAGE */}
-            <div className="relative">
-              <img
-                src={item.image}
-                alt={item.name}
-                loading="lazy"
-                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-
-              {/* Rating Badge */}
-              <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-full text-xs font-semibold text-blue-600 shadow-sm">
-                ⭐ {item.rating || "4.2"}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className="group bg-white rounded-2xl overflow-hidden 
+  shadow-[0_8px_24px_rgba(0,0,0,0.06)] 
+  hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] 
+  transition-all duration-300 hover:-translate-y-1 flex flex-col"
+            >
+              {/* IMAGE */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  loading="lazy"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-black/40 to-transparent" />
               </div>
 
-              {/* Offer Badge */}
-              {item.offer > 0 && (
-                <div className="absolute top-3 left-3 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium shadow">
-                  {item.offer}% OFF
+              {/* CONTENT */}
+              <div className="p-4 flex flex-col grow space-y-3">
+                {/* BADGES */}
+                <div className="flex gap-2 flex-wrap h-7 items-center">
+                  {item.isVeg && (
+                    <span className="text-[11px] font-medium bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                      🥦 Veg
+                    </span>
+                  )}
+                  {item.isPopular && (
+                    <span className="text-[11px] font-medium bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">
+                      ⭐ Popular
+                    </span>
+                  )}
+                  {item.isSpecial && (
+                    <span className="text-[11px] font-medium bg-orange-100 text-orange-700 px-2 py-1 rounded-full">
+                      ⚡ Special
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* CONTENT */}
-            <div className="px-4 flex flex-col flex-1">
-              {!item.inStock && (
-                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center text-red-600 font-semibold text-sm z-10 rounded-3xl">
-                  Out of Stock
+                {/* TITLE + RATING */}
+                <div className="flex justify-between gap-2 items-center min-h-12">
+                  <Typography
+                    variant="h3"
+                    weight="semibold"
+                    className="leading-snug line-clamp-2"
+                  >
+                    {item.name}
+                  </Typography>
+
+                  <div className="flex items-center gap-1 text-sm text-blue-600">
+                    ⭐ <span>{item.rating || "4.2"}</span>
+                  </div>
                 </div>
-              )}
 
-              {/* TITLE */}
-              <Typography
-                variant="h3"
-                weight="semibold"
-                className="text-base leading-snug line-clamp-1 text-gray-800"
-              >
-                {item.name}
-              </Typography>
+                {/* DESCRIPTION */}
+                <Typography size="xs" color="muted" className="line-clamp-2">
+                  {item.description}
+                </Typography>
 
-              {/* DESCRIPTION */}
-              <Typography
-                size="sm"
-                color="muted"
-                className=" line-clamp-1 text-gray-500"
-              >
-                {item.description}
-              </Typography>
+                {/* PRICE + BUTTON */}
+                <div className="mt-auto flex items-center justify-between pt-2">
+                  <Typography weight="bold" size="lg" className="text-orange-500">
+                    ₹{item.price}
+                  </Typography>
 
-              {/* SUB INFO */}
-              <div className="flex items-center justify-between text-sm text-gray-500">
-                <span className="flex items-center gap-1">
-                  ⏱ {item.prepTime}
-                </span>
-                {item.isVeg && (
-                  <span className="bg-green-50 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">
-                    Veg
-                  </span>
-                )}
-              </div>
-
-              {/* PRICE + BUTTON */}
-              <div className="mt-auto pt-4 mb-2 flex items-center justify-between">
-                <span className="text-lg font-bold text-orange-500">
-                  ₹{item.price}
-                </span>
-
-                <Button
-                  variant="primary"
-                  size="sm"
-                  disabled={!item.inStock}
-                  className="rounded-full px-2 shadow-md"
-                >
-                  {item.inStock ? "Add" : "Unavailable"}
-                </Button>
+                  <Button
+                    variant="primary"
+                    size="xs"
+                    className="rounded-full px-5 shadow-md"
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    Add
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

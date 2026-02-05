@@ -9,6 +9,7 @@ import Input from "../../UI/components/Input";
 import { authUtils, isAuthenticated } from "../../../utils/authUtils.js";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getSearchData } from "../../../utils/getSearchData"; // ✅ search helper
+import { useCart } from "../../../context/CartContext";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
   const currentUser = authUtils.getCurrentUser();
   const isUserAuthenticated = !!currentUser;
+  const { getCartItemCount } = useCart();
   
   // Check if user is on login/signup page
   const isOnAuthPage = pathname === '/login' || pathname === '/signup';
@@ -171,7 +173,7 @@ export default function Navbar() {
 
         {/* Cart Button */}
         <Button
-          className="border border-gray-300 flex items-center gap-2"
+          className="border border-gray-300 flex items-center gap-2 relative"
           variant="outline"
           size="sm"
         >
@@ -180,6 +182,11 @@ export default function Navbar() {
             <Typography variant="span" color="primary" weight="semibold">
               Cart
             </Typography>
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {getCartItemCount()}
+              </span>
+            )}
           </Link>
         </Button>
       </div>
@@ -264,11 +271,16 @@ export default function Navbar() {
             </Typography>
           </Button>
           <Button variant="outline" size="sm">
-            <Link to="/cart" className="flex items-center gap-2">
+            <Link to="/cart" className="flex items-center gap-2 relative">
               <IoCart />
               <Typography variant="span" color="primary" weight="semibold">
                 Cart
               </Typography>
+              {getCartItemCount() > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {getCartItemCount()}
+                </span>
+              )}
             </Link>
           </Button>
 

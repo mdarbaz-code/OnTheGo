@@ -17,7 +17,7 @@ export default function Notification({ message, type = 'info', onClose, duration
           {type === 'info' && 'ℹ'}
           {type === 'success' && '✓'}
           {type === 'error' && '✕'}
-          {type === 'warning' && '⚠'}
+          {type === 'warning' && '😋'}
         </span>
         <span className="notification-message">{message}</span>
       </div>
