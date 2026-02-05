@@ -1,11 +1,11 @@
-import HeroSection from '../Core/UI/HeroSEction'
+import HeroSection from "../Core/UI/HeroSEction";
 
 function Home() {
   return (
     <>
-    <HeroSection/>
-    </>      
-  )
+      <HeroSection />
+    </>
+  );
 }
 
-export default Home
+export default Home;
