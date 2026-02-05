@@ -1,86 +1,133 @@
-import { useMemo } from "react";
+import { useState } from "react";
 import Typography from "../../../UI/components/Typography";
 import Button from "../../../UI/components/Button";
+import Notification from "../../../UI/components/Notification";
+import { useCart } from "../../../../context/CartContext";
 
 const ItemCategory = ({ category, sortOption, activeFilter, searchText }) => {
-  const filteredItems = useMemo(() => {
-    return category.items
-      .filter((item) =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-      .filter((item) => {
-        if (activeFilter === "All") return true;
-        if (activeFilter === "Popular") return item.isPopular;
-        if (activeFilter === "Specials") return item.isSpecial;
-        if (activeFilter === "Vegetarian") return item.isVeg;
-      })
-      .sort((a, b) => {
-        if (sortOption === "lowToHigh") return a.price - b.price;
-        if (sortOption === "highToLow") return b.price - a.price;
-        return 0;
-      });
-  }, [category.items, searchText, activeFilter, sortOption]);
+  const { addToCart } = useCart();
+  const [notification, setNotification] = useState(null);
+
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    setNotification(`${item.name} added to cart!`);
+  };
+
+  const filteredItems = category.items
+    .filter((item) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase()),
+    )
+    .filter((item) => {
+      if (activeFilter === "All") return true;
+      if (activeFilter === "Popular") return item.isPopular;
+      if (activeFilter === "Specials") return item.isSpecial;
+      if (activeFilter === "Vegetarian") return item.isVeg;
+    })
+    .sort((a, b) => {
+      if (sortOption === "lowToHigh") return a.price - b.price;
+      if (sortOption === "highToLow") return b.price - a.price;
+      return 0;
+    });
 
   if (!filteredItems.length) return null;
 
   return (
-    <div className="mt-8">
-      <Typography variant="h2" size="lg sm:xl" weight="bold" className="mb-2">
-        {category.categoryName}
-      </Typography>
+    <>
+      {notification && (
+        <Notification
+          message={notification}
+          type="success"
+          onClose={() => setNotification(null)}
+          duration={2000}
+        />
+      )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
-          >
-            <div className="relative">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-32 sm:h-40 object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+      <div className="mt-8 sm:mt-10">
+        <Typography
+          variant="h2"
+          size="lg sm:2xl"
+          weight="bold"
+          className="mb-2 px-1"
+        >
+          {category.categoryName}
+        </Typography>
 
-              <div className="absolute top-2 right-2 bg-white text-xs px-2 py-1 rounded-full shadow">
-                ⭐ {item.rating}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
+            >
+              {/* IMAGE */}
+              <div className="relative">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  loading="lazy"
+                  className="w-full h-32 sm:h-40 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+
+                <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
 
-              {item.offer > 0 && (
-                <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                  {item.offer}% OFF
+              {/* CONTENT */}
+              <div className="px-3 py-2 sm:px-4 sm:py-3 flex flex-col flex-1 gap-2">
+                {/* BADGES */}
+                <div className="flex flex-wrap gap-1">
+                  {item.isVeg && (
+                    <span className="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                      Veg
+                    </span>
+                  )}
+                  {item.isPopular && (
+                    <span className="text-[10px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">
+                      Popular
+                    </span>
+                  )}
+                  {item.isSpecial && (
+                    <span className="text-[10px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
+                      Special
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
 
-            <div className="px-3 py-2 sm:px-4 sm:py-3 flex flex-col flex-1">
-              <Typography className="text-sm sm:text-base font-semibold line-clamp-1">
-                {item.name}
-              </Typography>
+                {/* TITLE + RATING */}
+                <div className="flex justify-between items-start gap-2">
+                  <Typography className="text-sm sm:text-base font-semibold line-clamp-1">
+                    {item.name}
+                  </Typography>
 
-              <Typography className="text-xs sm:text-sm text-gray-500 line-clamp-1">
-                {item.description}
-              </Typography>
+                  <span className="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-medium">
+                    ⭐ {item.rating}
+                  </span>
+                </div>
 
-              <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
-                <span>⏱ {item.prepTime}</span>
-                {item.isVeg && <span className="text-green-600">Veg</span>}
+                {/* DESCRIPTION */}
+                <Typography className="text-xs sm:text-sm text-gray-500 line-clamp-1">
+                  {item.description}
+                </Typography>
+
+                {/* PRICE + BUTTON */}
+                <div className="mt-auto flex items-center justify-between pt-2">
+                  <span className="text-base sm:text-lg font-bold text-orange-500">
+                    ₹{item.price}
+                  </span>
+
+                  <Button
+                    variant="primary"
+                    size="xs sm:sm"
+                    className=" px-3 sm:px-4 active:scale-95 transition-transform"
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    Add
+                  </Button>
+                </div>
               </div>
-
-              <div className="mt-auto pt-2 flex items-center justify-between">
-                <span className="text-base sm:text-lg font-bold text-orange-500">
-                  ₹{item.price}
-                </span>
-
-                <Button variant="primary" size="xs sm:sm" className="rounded-full px-3 sm:px-4">
-                  Add
-                </Button>
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
