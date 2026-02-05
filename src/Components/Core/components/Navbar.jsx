@@ -176,12 +176,14 @@ export default function Navbar() {
 
         {/* Cart Button */}
         {isAuthenticated && (
+           <Link to={"/cart"} >
           <Button variant="outline" size="sm" className="border border-gray-300 flex items-center gap-2" >
             <IoCart className={"scale-[1.4]"} />
             <Typography variant="span" color="primary" weight="semibold">
               Cart
             </Typography>
           </Button>
+           </Link>
         )}
       </div>
 
@@ -265,12 +267,14 @@ export default function Navbar() {
             </Typography>
           </Button>
           {isAuthenticated && (
+            <Link to={"/cart"} >
             <Button variant="outline" size="sm">
               <IoCart />
               <Typography variant="span" color="primary" weight="semibold">
                 Cart
               </Typography>
             </Button>
+            </Link>
           )}
 
           {/* Location */}

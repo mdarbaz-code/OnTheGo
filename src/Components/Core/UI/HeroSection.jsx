@@ -11,6 +11,7 @@ import restaurants from "../../../data/restaurants";
 import { Link } from "react-router-dom";
 import RestaurantMenuData from "../../../data/RestaurantMenus/index";
 import { useState } from "react";
+import { useCart } from "../../../context/CartContext";
 
 const popularItems = Object.values(RestaurantMenuData)
   .flatMap((res) =>
@@ -41,6 +42,14 @@ export function findRestaurantsByAddress(address) {
 }
 
 export default function HeroSection() {
+  
+  const { addToCart } = useCart();
+  
+  const handleAddToCart = (item) => {
+    addToCart(item);
+  };
+
+
   const [resto, setResto] = useState({ address: "", id: 0 });
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const matchingRestaurants = findRestaurantsByAddress(resto.address);
@@ -105,7 +114,7 @@ export default function HeroSection() {
             </div>{" "}
             {/* Dropdown Results */}{" "}
             {resto.address && !selectedRestaurant && (
-              <div className="absolute top-full left-0 w-full bg-white shadow-lg mt-2 rounded-md z-50 max-h-60 overflow-y-auto border border-gray-200 z-50">
+              <div className="absolute top-full left-0 w-full bg-white shadow-lg mt-2 rounded-md z-50 max-h-60 overflow-y-auto border border-gray-200 ">
                 {" "}
                 {matchingRestaurants.length > 0 ? (
                   matchingRestaurants.map((res) => (
@@ -267,9 +276,11 @@ export default function HeroSection() {
               <Typography variant="p" color="primary">
                 ₹{item.price}
               </Typography>
-              <Button variant="primary" size="sm" className="mt-2">
+              <Link to={"/cart"} >
+              <Button onClick={() => handleAddToCart({...item})}  variant="primary" size="sm" className="mt-2" >
                 Order Now
               </Button>
+              </Link>
             </div>
           ))}
         </div>
