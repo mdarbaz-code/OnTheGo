@@ -1,15 +1,14 @@
-const Restaurant8 = {
+const Restaurant7 = {
   restaurant: {
-    id: "8",
+    id: "7",
     name: "Govinda – Narayan Peth, Prabhat Road",
     location: "Narayan Peth, Prabhat Road, Pune",
     rating: 4.3,
     deliveryTime: "30-40 mins",
     cuisines: ["North Indian", "Punjabi", "Chinese", "Indian Snacks"],
-    costForTwo: 300
+    costForTwo: 300,
   },
   categories: [
-
     // 🫓 Parathas (Veg)
     {
       categoryId: "cat_parathas",
@@ -22,12 +21,13 @@ const Restaurant8 = {
           price: 160,
           isVeg: true,
           rating: 4.6,
-          image: "https://images.unsplash.com/photo-1606954548516-8c20c1c86555?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://www.cookwithmanali.com/wp-content/uploads/2013/09/Paneer-Paratha-Homemade-500x500.jpg",
           isPopular: true,
           isSpecial: true,
           prepTime: "12 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "gov_item_2",
@@ -36,12 +36,13 @@ const Restaurant8 = {
           price: 135,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1561043433-aaf687c4cf4b?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://indiafoodnetwork.in/wp-content/uploads/2018/01/aloo-methi-paratha.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_3",
@@ -50,12 +51,13 @@ const Restaurant8 = {
           price: 135,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1614691909158-86c2ff146b12?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://www.indianhealthyrecipes.com/wp-content/uploads/2020/01/mix-veg-paratha.webp",
           isPopular: false,
           isSpecial: false,
           prepTime: "11 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_4",
@@ -64,14 +66,15 @@ const Restaurant8 = {
           price: 55,
           isVeg: true,
           rating: 5.0,
-          image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://www.vegrecipesofindia.com/wp-content/uploads/2018/12/lauki-paratha-1a.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "7 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
     // 🍜 Noodles & Chinese
@@ -86,12 +89,13 @@ const Restaurant8 = {
           price: 179,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://vegecravings.com/wp-content/uploads/2017/03/veg-hakka-noodles-recipe-with-step-by-step-instructions.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "14 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_6",
@@ -100,12 +104,13 @@ const Restaurant8 = {
           price: 189,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1525755662778-989d0524087e?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://curryncornbread.files.wordpress.com/2020/03/s2.jpg?w=2048",
           isPopular: false,
           isSpecial: false,
           prepTime: "14 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_7",
@@ -114,12 +119,13 @@ const Restaurant8 = {
           price: 199,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1622199486540-3b0d3cbf3c8d?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://wholesomepatisserie.com/wp-content/uploads/2023/10/vegetarian-singapore-noodles-recipe.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_8",
@@ -128,14 +134,15 @@ const Restaurant8 = {
           price: 209,
           isVeg: true,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1532634896-26909d0d85a7?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://cdn.grofers.com/assets/search/usecase/banner/paneer_schezwan_noodles_01.png",
           isPopular: true,
           isSpecial: true,
           prepTime: "16 mins",
           inStock: true,
-          offer: 5
-        }
-      ]
+          offer: 5,
+        },
+      ],
     },
 
     // 🍛 Indian Main Course
@@ -150,12 +157,13 @@ const Restaurant8 = {
           price: 149,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://www.backpacknxplore.com/wp-content/uploads/2024/05/arhar-dal-tadka-recipe-1024x1024.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_10",
@@ -164,12 +172,13 @@ const Restaurant8 = {
           price: 119,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse1.mm.bing.net/th/id/OIP.GwsUFPeC7MmibcoOuaB9cwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: false,
           isSpecial: false,
           prepTime: "12 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "gov_item_11",
@@ -178,12 +187,13 @@ const Restaurant8 = {
           price: 219,
           isVeg: true,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://en-media.thebetterindia.com/uploads/2022/08/294156779_1082267416022212_8006411537588067133_n-1_11zon-1660981126.jpg",
           isPopular: true,
           isSpecial: true,
           prepTime: "25 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "gov_item_12",
@@ -192,17 +202,17 @@ const Restaurant8 = {
           price: 249,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://farm5.staticflickr.com/4244/34375209303_fe133a2921_o_d.png",
           isPopular: false,
           isSpecial: false,
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
-    }
-
-  ]
+          offer: 0,
+        },
+      ],
+    },
+  ],
 };
 
-export default Restaurant8;
+export default Restaurant7;

@@ -6,11 +6,10 @@ const Restaurant5 = {
     rating: 4.3,
     deliveryTime: "30-45 mins",
     cuisines: ["North Indian", "Chinese", "Mughlai", "Biryani", "Continental"],
-    costForTwo: 500
+    costForTwo: 500,
   },
-  categories: [
 
-    // 🍛 Biryani & Rice
+  categories: [
     {
       categoryId: "cat_biryani_rice",
       categoryName: "Biryani & Rice",
@@ -22,12 +21,10 @@ const Restaurant5 = {
           price: 279,
           isVeg: false,
           rating: 4.4,
-          image: "https://images.unsplash.com/photo-1548946526-f69e2424cf45?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image: "https://vismaifood.com/storage/app/uploads/public/980/eb9/ed6/thumb__1200_0_0_0_auto.jpg",
           prepTime: "25 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "zf_item_2",
@@ -36,12 +33,10 @@ const Restaurant5 = {
           price: 319,
           isVeg: false,
           rating: 4.5,
-          image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: true,
+          image: "https://th.bing.com/th/id/OIP.iI6Z0siXwZd_t1HJPfUjdQHaHe?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "30 mins",
           inStock: true,
-          offer: 15
+          offer: 15,
         },
         {
           id: "zf_item_3",
@@ -50,12 +45,10 @@ const Restaurant5 = {
           price: 219,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image: "https://tse2.mm.bing.net/th/id/OIP.LadujoU81UAUhQjy9gElUwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "zf_item_4",
@@ -64,17 +57,14 @@ const Restaurant5 = {
           price: 179,
           isVeg: false,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image: "https://cdn.loveandlemons.com/wp-content/uploads/2025/02/301_LLBlog_FriedRice_47795-recipe.jpg",
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
-    // 🍗 Starters & Kebabs
     {
       categoryId: "cat_starters_kebabs",
       categoryName: "Starters & Kebabs",
@@ -82,63 +72,54 @@ const Restaurant5 = {
         {
           id: "zf_item_5",
           name: "Chicken Lollipop",
+          image: "https://images.ctfassets.net/3s5io6mnxfqz/2QfgYEh5BLQWthT7xtaDZy/183fe36789674eb44ebd64ecc111a7c1/AdobeStock_242313610.jpeg?w=1920",
           description: "Spicy fried chicken lollipops",
           price: 239,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "zf_item_6",
           name: "Paneer 65",
+          image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/06/paneer-65-recipe.jpg",
           description: "Crispy paneer starter",
           price: 189,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
           prepTime: "15 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "zf_item_7",
           name: "Chicken Manchurian",
+          image: "https://tastyjevan.files.wordpress.com/2021/07/thumbnail_nt1-4.jpg?w=1200",
           description: "Indo-Chinese chicken in sauce",
           price: 259,
           isVeg: false,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
           prepTime: "20 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "zf_item_8",
           name: "Gobi Manchurian",
+          image: "https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/09/Gobi-Manchurian.jpg",
           description: "Crispy cauliflower in Indo-Chinese sauce",
           price: 179,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1512058564366-c9e7c0fa294c?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
-    // 🍛 Main Course
     {
       categoryId: "cat_main_course",
       categoryName: "Main Course",
@@ -146,62 +127,30 @@ const Restaurant5 = {
         {
           id: "zf_item_9",
           name: "Butter Chicken",
+          image: "https://feelgoodfoodie.net/wp-content/uploads/2023/08/Instant-Pot-Butter-Chicken-10-736x1104.jpg",
           description: "Creamy tomato gravy with chicken",
           price: 289,
           isVeg: false,
           rating: 4.4,
-          image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: true,
           prepTime: "24 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "zf_item_10",
           name: "Paneer Butter Masala",
+          image: "https://farm5.staticflickr.com/4244/34375209303_fe133a2921_o_d.png",
           description: "Creamy cottage cheese in gravy",
           price: 259,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
-        {
-          id: "zf_item_11",
-          name: "Mutton Korma",
-          description: "Rich mutton curry",
-          price: 319,
-          isVeg: false,
-          rating: 4.3,
-          image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
-          prepTime: "28 mins",
-          inStock: true,
-          offer: 5
-        },
-        {
-          id: "zf_item_12",
-          name: "Veg Kadai",
-          description: "Mixed veg in spicy gravy",
-          price: 219,
-          isVeg: true,
-          rating: 4.1,
-          image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
-          prepTime: "20 mins",
-          inStock: true,
-          offer: 0
-        }
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 export default Restaurant5;

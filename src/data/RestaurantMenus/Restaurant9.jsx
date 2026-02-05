@@ -6,11 +6,10 @@ const Restaurant9 = {
     rating: 4.5,
     deliveryTime: "25-35 mins",
     cuisines: ["Cafe", "Bakery", "Desserts", "Coffee"],
-    costForTwo: 350
+    costForTwo: 350,
   },
 
   categories: [
-
     // ☕ Beverages
     {
       categoryId: "cat_beverages",
@@ -23,12 +22,13 @@ const Restaurant9 = {
           price: 149,
           isVeg: true,
           rating: 4.4,
-          image: "https://images.unsplash.com/photo-1562059390-a761a084768e?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://insanelygoodrecipes.com/wp-content/uploads/2025/01/Starbucks-Iced-Coffee-Copycat-Recipe-4-300x200.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_2",
@@ -37,12 +37,13 @@ const Restaurant9 = {
           price: 159,
           isVeg: true,
           rating: 4.6,
-          image: "https://images.unsplash.com/photo-1523475496153-3d6ccf5a9ef6?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://i.fbcd.co/products/resized/resized-750-500/3b31edc71a1cf0a10a880ebacfec9cf60fc1a2a9ab9755a9e9b644fdbcbab2d3.jpg",
           isPopular: true,
           isSpecial: true,
           prepTime: "7 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "wh_item_3",
@@ -51,12 +52,13 @@ const Restaurant9 = {
           price: 169,
           isVeg: true,
           rating: 4.5,
-          image: "https://images.unsplash.com/photo-1523942839745-784897ff25db?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse1.mm.bing.net/th/id/OIP.3B9A7cPFQibvUrcFRPYBRgHaG_?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: false,
           isSpecial: false,
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_4",
@@ -65,14 +67,15 @@ const Restaurant9 = {
           price: 159,
           isVeg: true,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1551024709-8f23befc6e96?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://thebusybaker.ca/wp-content/uploads/2023/03/vanilla-milkshake-fb-ig-5-1156x1156.jpg",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
     // 🍰 Cakes & Desserts
@@ -87,12 +90,13 @@ const Restaurant9 = {
           price: 299,
           isVeg: true,
           rating: 4.7,
-          image: "https://images.unsplash.com/photo-1551024737-8c6a1fa8ca29?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.ybBUeXQK5_JrtFcxYhI5qQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "12 mins",
           inStock: true,
-          offer: 15
+          offer: 15,
         },
         {
           id: "wh_item_6",
@@ -101,12 +105,13 @@ const Restaurant9 = {
           price: 319,
           isVeg: true,
           rating: 4.5,
-          image: "https://images.unsplash.com/photo-1542827638-7b63eac0d085?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://thescranline.com/wp-content/uploads/2023/06/RED-VELVET-CAKE-23-S-01.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "12 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_7",
@@ -115,12 +120,13 @@ const Restaurant9 = {
           price: 339,
           isVeg: true,
           rating: 4.8,
-          image: "https://images.unsplash.com/photo-1551022375-e20c9fa6a482?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse3.mm.bing.net/th/id/OIP.vxPYzUWCVWv3P6xJ68bYBQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: true,
           isSpecial: true,
           prepTime: "10 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "wh_item_8",
@@ -129,14 +135,15 @@ const Restaurant9 = {
           price: 289,
           isVeg: true,
           rating: 4.4,
-          image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&auto=format&fit=crop&q=60",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
     // 🥪 Snacks & Bites
@@ -151,12 +158,13 @@ const Restaurant9 = {
           price: 179,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_10",
@@ -165,12 +173,13 @@ const Restaurant9 = {
           price: 199,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://easychickenrecipes.com/wp-content/uploads/2023/06/grilled-chicken-sandwich-1-of-6-edited.jpg",
           isPopular: true,
           isSpecial: false,
           prepTime: "12 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_11",
@@ -179,12 +188,13 @@ const Restaurant9 = {
           price: 129,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400&auto=format&fit=crop&q=60",
           isPopular: true,
           isSpecial: false,
           prepTime: "8 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "wh_item_12",
@@ -193,17 +203,17 @@ const Restaurant9 = {
           price: 159,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1610614819513-58e34989848b?w=400&auto=format&fit=crop&q=60",
+          image:
+            "https://tse2.mm.bing.net/th/id/OIP.Q3dPYaZZjAbSUrRVMZLWdAHaGC?rs=1&pid=ImgDetMain&o=7&rm=3",
           isPopular: false,
           isSpecial: false,
           prepTime: "10 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
-    }
-
-  ]
+          offer: 0,
+        },
+      ],
+    },
+  ],
 };
 
 export default Restaurant9;

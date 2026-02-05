@@ -6,12 +6,10 @@ const Restaurant6 = {
     rating: 4.2,
     deliveryTime: "30–40 mins",
     cuisines: ["Chinese", "North Indian", "Biryani"],
-    costForTwo: 300
+    costForTwo: 300,
   },
 
   categories: [
-
-    // 🍗 Starters
     {
       categoryId: "cat_starters",
       categoryName: "Starters",
@@ -23,12 +21,11 @@ const Restaurant6 = {
           price: 182,
           isVeg: false,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://images.ctfassets.net/3s5io6mnxfqz/2QfgYEh5BLQWthT7xtaDZy/183fe36789674eb44ebd64ecc111a7c1/AdobeStock_242313610.jpeg?w=1920",
           prepTime: "18 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "mf_item_2",
@@ -37,12 +34,11 @@ const Restaurant6 = {
           price: 129,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.idupfWFzwDFW6nTIqwWXTAHaF8?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "14 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "mf_item_3",
@@ -51,12 +47,11 @@ const Restaurant6 = {
           price: 199,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://www.cookinwithmima.com/wp-content/uploads/2023/12/chicken-pakora-600x800.jpg",
           prepTime: "16 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "mf_item_4",
@@ -65,17 +60,15 @@ const Restaurant6 = {
           price: 229,
           isVeg: true,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: true,
+          image:
+            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=600&q=80",
           prepTime: "20 mins",
           inStock: true,
-          offer: 8
-        }
-      ]
+          offer: 8,
+        },
+      ],
     },
 
-    // 🍛 Main Course
     {
       categoryId: "cat_main_course",
       categoryName: "Main Course",
@@ -87,12 +80,11 @@ const Restaurant6 = {
           price: 269,
           isVeg: false,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://vismaifood.com/storage/app/uploads/public/980/eb9/ed6/thumb__1200_0_0_0_auto.jpg",
           prepTime: "25 mins",
           inStock: true,
-          offer: 10
+          offer: 10,
         },
         {
           id: "mf_item_6",
@@ -101,12 +93,11 @@ const Restaurant6 = {
           price: 219,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://tse2.mm.bing.net/th/id/OIP.LadujoU81UAUhQjy9gElUwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "22 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "mf_item_7",
@@ -115,12 +106,11 @@ const Restaurant6 = {
           price: 289,
           isVeg: false,
           rating: 4.3,
-          image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: true,
+          image:
+            "https://www.thecookierookie.com/wp-content/uploads/2022/08/Featured-Indian-butter-chicken-1.jpg",
           prepTime: "24 mins",
           inStock: true,
-          offer: 15
+          offer: 15,
         },
         {
           id: "mf_item_8",
@@ -129,17 +119,15 @@ const Restaurant6 = {
           price: 249,
           isVeg: true,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://farm5.staticflickr.com/4244/34375209303_fe133a2921_o_d.png",
           prepTime: "23 mins",
           inStock: true,
-          offer: 0
-        }
-      ]
+          offer: 0,
+        },
+      ],
     },
 
-    // 🍜 Chinese / Indo-Chinese
     {
       categoryId: "cat_chinese",
       categoryName: "Chinese & Noodles",
@@ -151,12 +139,11 @@ const Restaurant6 = {
           price: 169,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1512058564366-c9e7c0fa294c?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://www.cookwithnabeela.com/wp-content/uploads/2024/02/VegetableFriedRice.webp",
           prepTime: "18 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "mf_item_10",
@@ -165,12 +152,11 @@ const Restaurant6 = {
           price: 189,
           isVeg: false,
           rating: 4.1,
-          image: "https://images.unsplash.com/photo-1622199486540-3b0d3cbf3c8d?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: false,
+          image:
+            "https://tse4.mm.bing.net/th/id/OIP.DolCp7XhjOVNcVP1KXVQCAHaJ4?w=900&h=1200&rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "18 mins",
           inStock: true,
-          offer: 5
+          offer: 5,
         },
         {
           id: "mf_item_11",
@@ -179,12 +165,11 @@ const Restaurant6 = {
           price: 179,
           isVeg: true,
           rating: 4.0,
-          image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&auto=format&fit=crop&q=60",
-          isPopular: false,
-          isSpecial: false,
+          image:
+            "https://myfoodstory.com/wp-content/uploads/2016/07/Chicken-Manchow-Soup-2.jpg",
           prepTime: "16 mins",
           inStock: true,
-          offer: 0
+          offer: 0,
         },
         {
           id: "mf_item_12",
@@ -193,17 +178,15 @@ const Restaurant6 = {
           price: 229,
           isVeg: false,
           rating: 4.2,
-          image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&auto=format&fit=crop&q=60",
-          isPopular: true,
-          isSpecial: true,
+          image:
+            "https://th.bing.com/th/id/OIP.zkU64CfbQSK9aSCISR1VqgHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
           prepTime: "20 mins",
           inStock: true,
-          offer: 8
-        }
-      ]
-    }
-
-  ]
+          offer: 8,
+        },
+      ],
+    },
+  ],
 };
 
 export default Restaurant6;

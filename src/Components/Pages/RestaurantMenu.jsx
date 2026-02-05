@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
             variant="h1"
             size="3xl"
             weight="bold"
-            className="text-[#ffb80e]"
+            className="text-gray-800"
           >
             {resInfo.restaurant.name}
           </Typography>
