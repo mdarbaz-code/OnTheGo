@@ -5,66 +5,168 @@ import Button from "../../UI/components/Button";
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineFastfood } from "react-icons/md";
 import { FaWallet } from "react-icons/fa";
+import { IoClose, IoLocation } from "react-icons/io5";
 import { BiHappyBeaming } from "react-icons/bi";
 import restaurants from "../../../data/restaurants";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import RestaurantMenuData from "../../../data/RestaurantMenus/index";
+import { useState } from "react";
+
+const popularItems = Object.values(RestaurantMenuData)
+  .flatMap((res) =>
+    res.categories.flatMap((cat) => cat.items.filter((item) => item.isPopular)),
+  )
+  // ✅ remove duplicates by id
+  .filter(
+    (item, index, self) => index === self.findIndex((t) => t.id === item.id),
+  );
+
+// Find restaurants by address (case-insensitive, no duplicates)
+export function findRestaurantsByAddress(address) {
+  if (!address) return [];
+
+  return (
+    Object.values(RestaurantMenuData)
+      // filter by address match
+      .filter((res) =>
+        res.restaurant.location.toLowerCase().includes(address.toLowerCase()),
+      )
+      // remove duplicates by restaurant id
+      .filter(
+        (res, index, self) =>
+          index ===
+          self.findIndex((r) => r.restaurant.id === res.restaurant.id),
+      )
+  );
+}
 
 export default function HeroSection() {
+  const [resto, setResto] = useState({ address: "", id: 0 });
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const matchingRestaurants = findRestaurantsByAddress(resto.address);
   return (
-    <main className="font-sans bg-white">
-      <section className="bg-[#ffb81f] px-6 py-16 md:px-20 md:py-24 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden ">
-        {/* Left Content */}
-        <div className="max-w-xl">
+    <main className="font-sans bg-white w-full">
+      {" "}
+      <section className="bg-[#ffb81f] w-full py-16 flex justify-between overflow-hidden">
+        {" "}
+        {/* Left Content */}{" "}
+        <div className="m-auto w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] min-w-[18rem] px-6">
+          {" "}
           <Typography
             variant="h1"
             weight="bold"
-            className={"text-white"}
-            size="4xl"
+            className="text-white text-2xl sm:text-3xl md:text-4xl"
           >
-            Are you starving?
-          </Typography>
+            {" "}
+            Are you starving?{" "}
+          </Typography>{" "}
           <Typography variant="p" size="lg" color="muted">
-            Within a few clicks, find meals that are accessible near you.
-          </Typography>
-
-          {/* Delivery / Pickup Toggle */}
-          <div className="bg-white p-4 flex-col rounded  w-140 ">
-            {/* <div className="flex gap-4 ">
-              <Input type={"radio"} label={"Delivery Option"}  variant="warning" size="sm">
-                Delivery
-              </Input>
-             <Input label="" type="radio" name="role" options={[ { label: "Admin", value: "admin" }, { label: "User", value: "user" }, { label: "Guest", value: "guest" } ]} required />
-            </div> */}
-
-            {/* Location Input */}
-            <div className="mt-4 flex   ">
+            {" "}
+            Within a few clicks, find meals that are accessible near you.{" "}
+          </Typography>{" "}
+          {/* Search Box */}{" "}
+          <div className="bg-white p-4 rounded shadow-md w-full mt-6 relative">
+            {" "}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {" "}
               <Input
                 label="Enter your address"
                 placeholder="Mohammadpur Bus Stand, Dhaka"
                 width="full"
                 variant="filled"
                 size="md"
-              />
-              {/* CTA Button */}
-              <Button
-                variant="warning"
-                size="lg"
-                className="h-14 mt-6 text-nowrap "
-              >
-                Find Food
-              </Button>
-            </div>
-          </div>
+                value={resto.address}
+                onChange={(e) =>
+                  setResto({ ...resto, address: e.target.value })
+                }
+                rightIcon={
+                  resto.address && (
+                    <IoClose
+                      onClick={() => {
+                        setResto({ address: "", id: 0 });
+                        setSelectedRestaurant(null);
+                      }}
+                      className="cursor-pointer text-gray-500 hover:text-red-500"
+                    />
+                  )
+                }
+              />{" "}
+              <Link to={`/restaurants/${resto.id}`}>
+                {" "}
+                <Button
+                  variant="warning"
+                  size="lg"
+                  className="h-12 sm:h-14 px-6 text-nowrap sm:mt-4"
+                >
+                  {" "}
+                  Find Food{" "}
+                </Button>{" "}
+              </Link>{" "}
+            </div>{" "}
+            {/* Dropdown Results */}{" "}
+            {resto.address && !selectedRestaurant && (
+              <div className="absolute top-full left-0 w-full bg-white shadow-lg mt-2 rounded-md z-50 max-h-60 overflow-y-auto border border-gray-200">
+                {" "}
+                {matchingRestaurants.length > 0 ? (
+                  matchingRestaurants.map((res) => (
+                    <div
+                      key={res.restaurant.id}
+                      className="px-4 py-2 cursor-pointer hover:bg-orange-50 transition-colors"
+                      onClick={() => {
+                        setResto({
+                          address: res.restaurant.name,
+                          id: res.restaurant.id,
+                        });
+                        setSelectedRestaurant(res);
+                      }}
+                    >
+                      {" "}
+                      <Typography
+                        variant="span"
+                        weight="semibold"
+                        color="primary"
+                      >
+                        {" "}
+                        {res.restaurant.name}{" "}
+                      </Typography>{" "}
+                      <Typography
+                        variant="span"
+                        className="block text-sm text-gray-500"
+                      >
+                        {" "}
+                        <IoLocation className="inline text-orange-400 mr-1" />{" "}
+                        {res.restaurant.location}{" "}
+                      </Typography>{" "}
+                      <Typography
+                        variant="span"
+                        className="block text-xs text-green-600"
+                      >
+                        {" "}
+                        ⭐ {res.restaurant.rating}{" "}
+                      </Typography>{" "}
+                    </div>
+                  ))
+                ) : (
+                  <div className="p-2 text-gray-500 text-center">
+                    {" "}
+                    No restaurants found{" "}
+                  </div>
+                )}{" "}
+              </div>
+            )}{" "}
+          </div>{" "}
         </div>
-
         {/* Right Image */}
-        <Image
-          src="https://th.bing.com/th/id/OIP.GqJvEZzUrIbG-lncbOd9VwHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
-          alt="Noodles Bowl"
-          size="xl"
-          shape="circle"
-          className="shadow-lg absolute bottom-0.5 scale-[2.4] right-48 "
-        />
+        <div className=" rounded-full h-[25%] w-[25%] hidden lg:block p-[10%] pr-[30%]">
+          {" "}
+          <Image
+            src="https://th.bing.com/th/id/OIP.GqJvEZzUrIbG-lncbOd9VwHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Noodles Bowl"
+            size="xl"
+            shape="circle"
+            className="shadow-lg scale-[2.4]"
+          />{" "}
+        </div>
       </section>
       {/* How It Works */}
       <section className="px-6 py-16 md:px-20 bg-white">
@@ -120,84 +222,58 @@ export default function HeroSection() {
         </div>
       </section>
       {/* Popular Items */}
-    <section className="px-6 py-16 md:px-20 bg-linear-to-b from-[#FFF7E0] to-white shadow">
-  {/* Heading stays fixed */}
-  <Typography
-    variant="h2"
-    weight="bold"
-    color="warning"
-    size="3xl"
-    className="text-center mb-12"
-  >
-    Popular Items
-  </Typography>
+      {/* Popular Items */}
+      <section className="px-6 py-16 md:px-20 bg-linear-to-b from-[#FFF7E0] to-white shadow">
+        <Typography
+          variant="h2"
+          weight="bold"
+          color="warning"
+          size="3xl"
+          className="text-center mb-12"
+        >
+          Popular Items
+        </Typography>
 
-  {/* Scrollable row */}
-  <div className="flex gap-6 overflow-x-auto w-full pb-4">
-    {[
-      {
-        name: "Cheese Burger",
-        vendor: "Burger Arena",
-        price: "$3.88",
-        image:
-          "https://tse1.mm.bing.net/th/id/OIP.3QyzsiXG-jlOCfsWR4i-LQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-      },
-      {
-        name: "Toffe's Cake",
-        vendor: "Top Sticks",
-        price: "$4.00",
-        image:
-          "https://tse3.mm.bing.net/th/id/OIP.obvRzjM5buuA4OiTEp4C0wHaIS?rs=1&pid=ImgDetMain&o=7&rm=3",
-      },
-      {
-        name: "Fish Fry",
-        vendor: "Fish World",
-        price: "$1.99",
-        image:
-          "https://i1.wp.com/www.eazynazy.com/wp-content/uploads/2017/02/img_5673-1.jpg",
-      },
-      {
-        name: "Crispy Sandwich",
-        vendor: "Fastfood Dine",
-        price: "$3.00",
-        image:
-          "https://bellyfull.net/wp-content/uploads/2023/02/Crispy-Chicken-Sandwich-blog-2.jpg",
-      },
-      {
-        name: "Thai Soup",
-        vendor: "Foody Man",
-        price: "$2.79",
-        image:
-          "https://www.recipetineats.com/wp-content/uploads/2019/09/Tom-Yum-soup_2.jpg",
-      },
-    ].map((item, i) => (
-      <div
-        key={i}
-        className="min-w-55 bg-white p-4 rounded-xl shadow-2xl text-center border border-[#ffb81f]"
-      >
-        <Image
-          src={item.image}
-          alt={item.name}
-          size="xl"
-          shape="rounded"
-        />
-        <Typography variant="h5" weight="bold" color="muted">
-          {item.name}
-        </Typography>
-        <Typography variant="small" color="muted">
-          {item.vendor}
-        </Typography>
-        <Typography variant="p" color="primary">
-          {item.price}
-        </Typography>
-        <Button variant="primary" size="sm" className="mt-2">
-          Order Now
-        </Button>
-      </div>
-    ))}
-  </div>
-</section>
-
+        <div className="flex gap-6 overflow-x-auto w-full pb-4">
+          {popularItems.map((item) => (
+            <div
+              key={item.id}
+              className="min-w-55 bg-white p-4 rounded-xl shadow-2xl text-center border border-[#ffb81f]"
+            >
+              <Image
+                src={item.image}
+                alt={item.name}
+                size="xl"
+                shape="rounded"
+              />
+              <Typography
+                className={"line-clamp-1"}
+                variant="h5"
+                weight="bold"
+                color="muted"
+              >
+                {item.name}
+              </Typography>
+              <Typography variant="small" color="muted">
+                {/* Show restaurant name */}
+                {
+                  Object.values(RestaurantMenuData).find((res) =>
+                    res.categories.some((cat) =>
+                      cat.items.some((i) => i.id === item.id),
+                    ),
+                  )?.restaurant.name
+                }
+              </Typography>
+              <Typography variant="p" color="primary">
+                ₹{item.price}
+              </Typography>
+              <Button variant="primary" size="sm" className="mt-2">
+                Order Now
+              </Button>
+            </div>
+          ))}
+        </div>
+      </section>
       {/* Featured Restaurants */}
       <section className="px-6 py-16 md:px-20 bg-white flex flex-col justify-center items-center ">
         <Typography
@@ -211,10 +287,13 @@ export default function HeroSection() {
         </Typography>
         <div className="  flex gap-6 overflow-x-auto w-full pb-4 mb-8 ">
           {restaurants.map((res, i) => (
-            <div key={i} className=" min-w-76 shadow-2xl p-4 rounded-xl text-center">
+            <div
+              key={i}
+              className=" min-w-76 shadow-2xl p-4 rounded-xl text-center"
+            >
               <Image
                 src={res.image}
-                alt={res.name }
+                alt={res.name}
                 size="xxl"
                 shape="rounded"
                 fallback="Resto Image"
@@ -234,24 +313,20 @@ export default function HeroSection() {
               <Typography variant="p" color="danger">
                 {res.discount} Off
               </Typography>
-              <Typography variant="small" color="muted" >
+              <Typography variant="small" color="muted">
                 {res.status}
               </Typography>
               <br /> <br />
-              <Link to={`/restaurants/${res.id}`} className="" ><Button variant="warning" >Explore</Button></Link>
+              <Link to={`/restaurants/${res.id}`} className="">
+                <Button variant="warning">Explore</Button>
+              </Link>
             </div>
           ))}
         </div>
-        <Link to={"/restaurants"} className="" ><Button>More Resturant</Button></Link>
+        <Link to={"/restaurants"} className="">
+          <Button>More Resturant</Button>
+        </Link>
       </section>
-
-
-
-
-
-
-
-
       {/* Install App */}
       <section className="px-6 py-16 md:px-20 bg-[#FFF7E0] flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="max-w-xl">

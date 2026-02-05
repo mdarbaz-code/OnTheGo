@@ -2,6 +2,7 @@ import Typography from "../../UI/components/Typography";
 import Input from "../../UI/components/Input";
 import Button from "../../UI/components/Button";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -62,7 +63,7 @@ export default function Footer() {
             Contact
           </Typography>
           <ul className="mt-2 space-y-1 text-white/80 text-sm">
-            <li>Help & Support</li>
+            <li><Link to={"/helpandsupport"}>Help & Support</Link></li>
             <li>Partner with us</li>
             <li>Ride with us</li>
           </ul>
@@ -90,12 +91,12 @@ export default function Footer() {
           <Typography variant="small" className="mt-4 text-white/80">
             Receive exclusive offers in your mailbox
           </Typography>
-          <div className="flex gap-2 mt-2">
+          <div className="flex  items-baseline gap-2  mt-2">
             <Input
               type="email"
               placeholder="Enter your email"
-              width="full"
               size="sm"
+              
             />
             <Button variant="primary" size="sm">
               Subscribe
