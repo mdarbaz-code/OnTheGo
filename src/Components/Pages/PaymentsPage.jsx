@@ -21,7 +21,7 @@ const PaymentsPage = () => {
     const [paymentMethod, setPaymentMethod] = useState("cod");
     const [payments] = useState([
         { id: "cod", title: "Cash on Delivery", desc: "Pay when your order arrives at your doorstep", use: "enabled" },
-        { id: "upi", title: "UPI", desc: "Pay using upi directly", use: "disabled" }
+        { id: "upi", title: "UPI", desc: "Pay using upi directly", use: "enabled" }
     ]);
     const handlePaymentChange = (payId) => {
         setPaymentMethod(payId);

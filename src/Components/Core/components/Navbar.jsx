@@ -111,7 +111,7 @@ export default function Navbar() {
         {/* ✅ Search Input */}
         <Input
           type="text"
-          placeholder="Search Restaurants or Food"
+          placeholder="Search Food ex:Dal Tadka"
           value={searchTerm}
           onChange={(e) => {
             if (!isOnAuthPage) {

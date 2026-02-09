@@ -80,7 +80,7 @@ export default function HeroSection() {
               {" "}
               <Input
                 label="Enter your address"
-                placeholder="Mohammadpur Bus Stand, Dhaka"
+                placeholder="KBNU KALABURAGI 585104"
                 width="full"
                 variant="filled"
                 size="md"

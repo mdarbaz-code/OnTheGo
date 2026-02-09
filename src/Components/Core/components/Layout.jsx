@@ -4,14 +4,16 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 function Layout() {
-    const location = useParams();
-    useEffect(() => { window.scrollTo(0, 0); },[location]);
+  const location = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <>
       <Navbar />
       <main>
-        <Outlet />
+      <Outlet />
       </main>
       <Footer />
     </>
