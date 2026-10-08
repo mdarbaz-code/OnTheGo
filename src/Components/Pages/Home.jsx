@@ -1,4 +1,4 @@
-import HeroSection from "../Core/UI/HeroSEction";
+import HeroSection from "../Core/UI/HeroSection";
 
 function Home() {
   return (
